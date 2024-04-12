@@ -1,0 +1,21 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "key": {
+    "A": {
+      "item": "crystallography:triple_extruded_steel_ingot"
+    },
+    "B": {
+      "item": "crystallography:secondary_extruded_steel_ingot"
+    }
+  },
+  "pattern": [
+    "AAA",
+    "ABA",
+    "AAA"
+  ],
+  "result": {
+    "item": "crystallography:quadruple_extruded_unfired_steel_ingot"
+  },
+  "show_notification": true
+}

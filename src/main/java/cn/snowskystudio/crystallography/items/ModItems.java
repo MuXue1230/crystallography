@@ -13,6 +13,22 @@ public class ModItems {
 
     public static final RegistryObject<Item> STEEL_INGOT = ITEMS.register("steel_ingot",
             () -> new Item(new Item.Properties()));
+    public static final RegistryObject<Item> FIRST_EXTRUDED_UNFIRED_STEEL_INGOT = ITEMS.register("first_extruded_unfired_steel_ingot",
+            () -> new Item(new Item.Properties()));
+    public static final RegistryObject<Item> FIRST_EXTRUDED_STEEL_INGOT = ITEMS.register("first_extruded_steel_ingot",
+            () -> new Item(new Item.Properties()));
+    public static final RegistryObject<Item> SECONDARY_EXTRUDED_UNFIRED_STEEL_INGOT = ITEMS.register("secondary_extruded_unfired_steel_ingot",
+            () -> new Item(new Item.Properties()));
+    public static final RegistryObject<Item> SECONDARY_EXTRUDED_STEEL_INGOT = ITEMS.register("secondary_extruded_steel_ingot",
+            () -> new Item(new Item.Properties()));
+    public static final RegistryObject<Item> TRIPLE_EXTRUDED_UNFIRED_STEEL_INGOT = ITEMS.register("triple_extruded_unfired_steel_ingot",
+            () -> new Item(new Item.Properties()));
+    public static final RegistryObject<Item> TRIPLE_EXTRUDED_STEEL_INGOT = ITEMS.register("triple_extruded_steel_ingot",
+            () -> new Item(new Item.Properties()));
+    public static final RegistryObject<Item> QUADRUPLE_EXTRUDED_UNFIRED_STEEL_INGOT = ITEMS.register("quadruple_extruded_unfired_steel_ingot",
+            () -> new Item(new Item.Properties()));
+    public static final RegistryObject<Item> QUADRUPLE_EXTRUDED_STEEL_INGOT = ITEMS.register("quadruple_extruded_steel_ingot",
+            () -> new Item(new Item.Properties()));
 
     public static void register(IEventBus eventBus) {
         ITEMS.register(eventBus);

@@ -1,0 +1,11 @@
+{
+  "type": "minecraft:smelting",
+  "category": "misc",
+  "cookingtime": 400,
+  "experience": 2.0,
+  "group": "unfired_steel_ingot",
+  "ingredient": {
+    "item": "crystallography:secondary_extruded_unfired_steel_ingot"
+  },
+  "result": "crystallography:secondary_extruded_steel_ingot"
+}

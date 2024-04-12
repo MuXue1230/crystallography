@@ -1,0 +1,11 @@
+{
+  "type": "minecraft:blasting",
+  "category": "misc",
+  "cookingtime": 400,
+  "experience": 4.0,
+  "group": "unfired_steel_ingot",
+  "ingredient": {
+    "item": "crystallography:triple_extruded_unfired_steel_ingot"
+  },
+  "result": "crystallography:triple_extruded_steel_ingot"
+}

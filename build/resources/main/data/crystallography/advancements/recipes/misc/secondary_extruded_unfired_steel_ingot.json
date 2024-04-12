@@ -1,0 +1,35 @@
+{
+  "parent": "minecraft:recipes/root",
+  "criteria": {
+    "has_first_extruded_steel_ingot": {
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "crystallography:first_extruded_steel_ingot"
+            ]
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "has_the_recipe": {
+      "conditions": {
+        "recipe": "crystallography:secondary_extruded_unfired_steel_ingot"
+      },
+      "trigger": "minecraft:recipe_unlocked"
+    }
+  },
+  "requirements": [
+    [
+      "has_first_extruded_steel_ingot",
+      "has_the_recipe"
+    ]
+  ],
+  "rewards": {
+    "recipes": [
+      "crystallography:secondary_extruded_unfired_steel_ingot"
+    ]
+  },
+  "sends_telemetry_event": false
+}
