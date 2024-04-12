@@ -1,0 +1,9 @@
+Manifest-Version: 1.0
+Specification-Title: crystallography
+Specification-Vendor: MUXUE1230
+Specification-Version: 1
+Implementation-Title: crystallography
+Implementation-Version: 1.2.0
+Implementation-Vendor: MUXUE1230
+Implementation-Timestamp: 2024-04-12T22:48:41+0800
+

@@ -1,8 +1,10 @@
 package cn.snowskystudio.crystallography.datagen;
 
 import cn.snowskystudio.crystallography.Crystallography;
+import cn.snowskystudio.crystallography.blocks.ModBlocks;
 import net.minecraft.core.HolderLookup;
 import net.minecraft.data.PackOutput;
+import net.minecraft.tags.BlockTags;
 import net.minecraftforge.common.Tags;
 import net.minecraftforge.common.data.BlockTagsProvider;
 import net.minecraftforge.common.data.ExistingFileHelper;
@@ -19,5 +21,10 @@ public class ModBlockTagGenerator extends BlockTagsProvider {
     protected void addTags(HolderLookup.Provider pProvider) {
         //this.tag(ModTags.Blocks.XX)
         //        .add(ModBlocks.XX_BLOCK.get()).addTag(Tags.Blocks.XX);
+
+        this.tag(BlockTags.MINEABLE_WITH_PICKAXE)
+                .add(ModBlocks.STEEL_BLOCK.get());
+        this.tag(BlockTags.NEEDS_DIAMOND_TOOL)
+                .add(ModBlocks.STEEL_BLOCK.get());
     }
 }

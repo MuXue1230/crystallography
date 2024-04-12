@@ -7,7 +7,9 @@
   },
   "minecraft:adventure/adventuring_time": {
     "criteria": {
-      "minecraft:birch_forest": "2024-04-12 18:57:17 +0800"
+      "minecraft:birch_forest": "2024-04-12 18:57:17 +0800",
+      "minecraft:river": "2024-04-12 21:59:55 +0800",
+      "minecraft:old_growth_birch_forest": "2024-04-12 22:00:00 +0800"
     },
     "done": false
   },
@@ -161,19 +163,49 @@
     },
     "done": true
   },
-  "crystallography:recipes/misc/secondary_extruded_steel_ingot_from_smelting_secondary_extruded_unfired_steel_ingot": {
-    "criteria": {
-      "has_secondary_extruded_unfired_steel_ingot": "2024-04-12 20:44:41 +0800"
-    },
-    "done": true
-  },
   "crystallography:recipes/misc/first_extruded_unfired_steel_ingot": {
     "criteria": {
       "has_steel_ingot": "2024-04-12 20:38:43 +0800"
     },
     "done": true
   },
+  "crystallography:recipes/misc/steel_ingot_from_smelting_iron_ingot": {
+    "criteria": {
+      "has_iron_ingot": "2024-04-12 20:38:43 +0800"
+    },
+    "done": true
+  },
+  "crystallography:recipes/misc/steel_ingot_from_blasting_iron_ingot": {
+    "criteria": {
+      "has_iron_ingot": "2024-04-12 20:38:43 +0800"
+    },
+    "done": true
+  },
+  "crystallography:recipes/misc/secondary_extruded_unfired_steel_ingot": {
+    "criteria": {
+      "has_first_extruded_steel_ingot": "2024-04-12 20:43:26 +0800"
+    },
+    "done": true
+  },
+  "crystallography:recipes/misc/first_extruded_steel_ingot_from_blasting_first_extruded_unfired_steel_ingot": {
+    "criteria": {
+      "has_first_extruded_unfired_steel_ingot": "2024-04-12 20:43:42 +0800"
+    },
+    "done": true
+  },
+  "crystallography:recipes/misc/first_extruded_steel_ingot_from_smelting_first_extruded_unfired_steel_ingot": {
+    "criteria": {
+      "has_first_extruded_unfired_steel_ingot": "2024-04-12 20:43:42 +0800"
+    },
+    "done": true
+  },
   "crystallography:recipes/misc/quadruple_extruded_steel_ingot_from_smelting_quadruple_extruded_unfired_steel_ingot": {
+    "criteria": {
+      "has_quadruple_extruded_unfired_steel_ingot": "2024-04-12 20:44:14 +0800"
+    },
+    "done": true
+  },
+  "crystallography:recipes/misc/quadruple_extruded_steel_ingot_from_blasting_quadruple_extruded_unfired_steel_ingot": {
     "criteria": {
       "has_quadruple_extruded_unfired_steel_ingot": "2024-04-12 20:44:14 +0800"
     },
@@ -185,45 +217,9 @@
     },
     "done": true
   },
-  "crystallography:recipes/misc/triple_extruded_steel_ingot_from_blasting_triple_extruded_unfired_steel_ingot": {
+  "crystallography:recipes/misc/secondary_extruded_steel_ingot_from_smelting_secondary_extruded_unfired_steel_ingot": {
     "criteria": {
-      "has_triple_extruded_unfired_steel_ingot": "2024-04-12 20:45:12 +0800"
-    },
-    "done": true
-  },
-  "crystallography:recipes/misc/steel_ingot_from_smelting_iron_ingot": {
-    "criteria": {
-      "has_iron_ingot": "2024-04-12 20:38:43 +0800"
-    },
-    "done": true
-  },
-  "crystallography:recipes/misc/quadruple_extruded_unfired_steel_ingot": {
-    "criteria": {
-      "has_triple_extruded_steel_ingot": "2024-04-12 20:45:04 +0800"
-    },
-    "done": true
-  },
-  "minecraft:recipes/decorations/campfire": {
-    "criteria": {
-      "has_coal": "2024-04-12 20:46:37 +0800"
-    },
-    "done": true
-  },
-  "crystallography:recipes/misc/triple_extruded_steel_ingot_from_smelting_triple_extruded_unfired_steel_ingot": {
-    "criteria": {
-      "has_triple_extruded_unfired_steel_ingot": "2024-04-12 20:45:12 +0800"
-    },
-    "done": true
-  },
-  "minecraft:recipes/decorations/smoker": {
-    "criteria": {
-      "has_furnace": "2024-04-12 20:46:21 +0800"
-    },
-    "done": true
-  },
-  "minecraft:recipes/decorations/chest": {
-    "criteria": {
-      "has_lots_of_items": "2024-04-12 20:45:29 +0800"
+      "has_secondary_extruded_unfired_steel_ingot": "2024-04-12 20:44:41 +0800"
     },
     "done": true
   },
@@ -233,27 +229,33 @@
     },
     "done": true
   },
-  "crystallography:recipes/misc/quadruple_extruded_steel_ingot_from_blasting_quadruple_extruded_unfired_steel_ingot": {
+  "crystallography:recipes/misc/triple_extruded_steel_ingot_from_blasting_triple_extruded_unfired_steel_ingot": {
     "criteria": {
-      "has_quadruple_extruded_unfired_steel_ingot": "2024-04-12 20:44:14 +0800"
+      "has_triple_extruded_unfired_steel_ingot": "2024-04-12 20:45:12 +0800"
     },
     "done": true
   },
-  "crystallography:recipes/misc/steel_ingot_from_blasting_iron_ingot": {
+  "crystallography:recipes/misc/triple_extruded_steel_ingot_from_smelting_triple_extruded_unfired_steel_ingot": {
     "criteria": {
-      "has_iron_ingot": "2024-04-12 20:38:43 +0800"
+      "has_triple_extruded_unfired_steel_ingot": "2024-04-12 20:45:12 +0800"
     },
     "done": true
   },
-  "crystallography:recipes/misc/first_extruded_steel_ingot_from_blasting_first_extruded_unfired_steel_ingot": {
+  "minecraft:recipes/decorations/chest": {
     "criteria": {
-      "has_first_extruded_unfired_steel_ingot": "2024-04-12 20:43:42 +0800"
+      "has_lots_of_items": "2024-04-12 20:45:29 +0800"
     },
     "done": true
   },
-  "crystallography:recipes/misc/secondary_extruded_unfired_steel_ingot": {
+  "minecraft:recipes/decorations/smoker": {
     "criteria": {
-      "has_first_extruded_steel_ingot": "2024-04-12 20:43:26 +0800"
+      "has_furnace": "2024-04-12 20:46:21 +0800"
+    },
+    "done": true
+  },
+  "minecraft:recipes/decorations/campfire": {
+    "criteria": {
+      "has_coal": "2024-04-12 20:46:37 +0800"
     },
     "done": true
   },
@@ -269,9 +271,309 @@
     },
     "done": true
   },
-  "crystallography:recipes/misc/first_extruded_steel_ingot_from_smelting_first_extruded_unfired_steel_ingot": {
+  "minecraft:recipes/redstone/redstone_torch": {
     "criteria": {
-      "has_first_extruded_unfired_steel_ingot": "2024-04-12 20:43:42 +0800"
+      "has_redstone": "2024-04-12 21:21:17 +0800"
+    },
+    "done": true
+  },
+  "minecraft:recipes/tools/clock": {
+    "criteria": {
+      "has_redstone": "2024-04-12 21:21:17 +0800"
+    },
+    "done": true
+  },
+  "minecraft:recipes/redstone/dropper": {
+    "criteria": {
+      "has_redstone": "2024-04-12 21:21:17 +0800"
+    },
+    "done": true
+  },
+  "minecraft:recipes/redstone/redstone_block": {
+    "criteria": {
+      "has_redstone": "2024-04-12 21:21:17 +0800"
+    },
+    "done": true
+  },
+  "minecraft:recipes/redstone/note_block": {
+    "criteria": {
+      "has_redstone": "2024-04-12 21:21:17 +0800"
+    },
+    "done": true
+  },
+  "minecraft:recipes/redstone/target": {
+    "criteria": {
+      "has_redstone": "2024-04-12 21:21:17 +0800"
+    },
+    "done": true
+  },
+  "minecraft:recipes/tools/compass": {
+    "criteria": {
+      "has_redstone": "2024-04-12 21:21:17 +0800"
+    },
+    "done": true
+  },
+  "minecraft:recipes/redstone/piston": {
+    "criteria": {
+      "has_redstone": "2024-04-12 21:21:17 +0800"
+    },
+    "done": true
+  },
+  "minecraft:recipes/combat/diamond_leggings": {
+    "criteria": {
+      "has_diamond": "2024-04-12 21:21:22 +0800"
+    },
+    "done": true
+  },
+  "minecraft:recipes/combat/diamond_sword": {
+    "criteria": {
+      "has_diamond": "2024-04-12 21:21:22 +0800"
+    },
+    "done": true
+  },
+  "minecraft:recipes/decorations/jukebox": {
+    "criteria": {
+      "has_diamond": "2024-04-12 21:21:22 +0800"
+    },
+    "done": true
+  },
+  "minecraft:recipes/combat/diamond_chestplate": {
+    "criteria": {
+      "has_diamond": "2024-04-12 21:21:22 +0800"
+    },
+    "done": true
+  },
+  "minecraft:recipes/combat/diamond_helmet": {
+    "criteria": {
+      "has_diamond": "2024-04-12 21:21:22 +0800"
+    },
+    "done": true
+  },
+  "minecraft:recipes/tools/diamond_pickaxe": {
+    "criteria": {
+      "has_diamond": "2024-04-12 21:21:22 +0800"
+    },
+    "done": true
+  },
+  "minecraft:recipes/building_blocks/diamond_block": {
+    "criteria": {
+      "has_diamond": "2024-04-12 21:21:22 +0800"
+    },
+    "done": true
+  },
+  "minecraft:recipes/tools/diamond_hoe": {
+    "criteria": {
+      "has_diamond": "2024-04-12 21:21:22 +0800"
+    },
+    "done": true
+  },
+  "minecraft:recipes/tools/diamond_shovel": {
+    "criteria": {
+      "has_diamond": "2024-04-12 21:21:22 +0800"
+    },
+    "done": true
+  },
+  "minecraft:story/mine_diamond": {
+    "criteria": {
+      "diamond": "2024-04-12 21:21:22 +0800"
+    },
+    "done": true
+  },
+  "minecraft:recipes/tools/diamond_axe": {
+    "criteria": {
+      "has_diamond": "2024-04-12 21:21:22 +0800"
+    },
+    "done": true
+  },
+  "minecraft:recipes/combat/diamond_boots": {
+    "criteria": {
+      "has_diamond": "2024-04-12 21:21:22 +0800"
+    },
+    "done": true
+  },
+  "crystallography:recipes/misc/crystallization_processing_core": {
+    "criteria": {
+      "has_nether_star": "2024-04-12 21:21:27 +0800"
+    },
+    "done": true
+  },
+  "minecraft:recipes/misc/beacon": {
+    "criteria": {
+      "has_nether_star": "2024-04-12 21:21:27 +0800"
+    },
+    "done": true
+  },
+  "minecraft:recipes/misc/iron_ingot_from_iron_block": {
+    "criteria": {
+      "has_iron_block": "2024-04-12 21:59:03 +0800"
+    },
+    "done": true
+  },
+  "minecraft:recipes/decorations/anvil": {
+    "criteria": {
+      "has_iron_block": "2024-04-12 21:59:03 +0800"
+    },
+    "done": true
+  },
+  "minecraft:recipes/transportation/mangrove_boat": {
+    "criteria": {
+      "in_water": "2024-04-12 21:59:56 +0800"
+    },
+    "done": true
+  },
+  "minecraft:recipes/transportation/acacia_boat": {
+    "criteria": {
+      "in_water": "2024-04-12 21:59:56 +0800"
+    },
+    "done": true
+  },
+  "minecraft:recipes/transportation/cherry_boat": {
+    "criteria": {
+      "in_water": "2024-04-12 21:59:56 +0800"
+    },
+    "done": true
+  },
+  "minecraft:recipes/transportation/bamboo_raft": {
+    "criteria": {
+      "in_water": "2024-04-12 21:59:56 +0800"
+    },
+    "done": true
+  },
+  "minecraft:recipes/transportation/spruce_boat": {
+    "criteria": {
+      "in_water": "2024-04-12 21:59:56 +0800"
+    },
+    "done": true
+  },
+  "minecraft:recipes/transportation/birch_boat": {
+    "criteria": {
+      "in_water": "2024-04-12 21:59:56 +0800"
+    },
+    "done": true
+  },
+  "minecraft:recipes/transportation/oak_boat": {
+    "criteria": {
+      "in_water": "2024-04-12 21:59:56 +0800"
+    },
+    "done": true
+  },
+  "minecraft:recipes/transportation/jungle_boat": {
+    "criteria": {
+      "in_water": "2024-04-12 21:59:56 +0800"
+    },
+    "done": true
+  },
+  "minecraft:recipes/transportation/dark_oak_boat": {
+    "criteria": {
+      "in_water": "2024-04-12 21:59:56 +0800"
+    },
+    "done": true
+  },
+  "minecraft:recipes/redstone/lever": {
+    "criteria": {
+      "has_cobblestone": "2024-04-12 22:47:54 +0800"
+    },
+    "done": true
+  },
+  "minecraft:recipes/combat/stone_sword": {
+    "criteria": {
+      "has_cobblestone": "2024-04-12 22:47:54 +0800"
+    },
+    "done": true
+  },
+  "minecraft:recipes/decorations/cobblestone_wall": {
+    "criteria": {
+      "has_cobblestone": "2024-04-12 22:47:54 +0800"
+    },
+    "done": true
+  },
+  "minecraft:recipes/tools/stone_pickaxe": {
+    "criteria": {
+      "has_cobblestone": "2024-04-12 22:47:54 +0800"
+    },
+    "done": true
+  },
+  "minecraft:recipes/tools/stone_axe": {
+    "criteria": {
+      "has_cobblestone": "2024-04-12 22:47:54 +0800"
+    },
+    "done": true
+  },
+  "minecraft:story/mine_stone": {
+    "criteria": {
+      "get_stone": "2024-04-12 22:47:54 +0800"
+    },
+    "done": true
+  },
+  "minecraft:recipes/decorations/furnace": {
+    "criteria": {
+      "has_cobblestone": "2024-04-12 22:47:54 +0800"
+    },
+    "done": true
+  },
+  "minecraft:recipes/building_blocks/cobblestone_slab": {
+    "criteria": {
+      "has_cobblestone": "2024-04-12 22:47:54 +0800"
+    },
+    "done": true
+  },
+  "minecraft:recipes/building_blocks/cobblestone_slab_from_cobblestone_stonecutting": {
+    "criteria": {
+      "has_cobblestone": "2024-04-12 22:47:54 +0800"
+    },
+    "done": true
+  },
+  "minecraft:adventure/root": {
+    "criteria": {
+      "killed_something": "2024-04-12 22:48:03 +0800"
+    },
+    "done": true
+  },
+  "minecraft:adventure/kill_all_mobs": {
+    "criteria": {
+      "minecraft:zombie": "2024-04-12 22:48:03 +0800"
+    },
+    "done": false
+  },
+  "minecraft:adventure/kill_a_mob": {
+    "criteria": {
+      "minecraft:zombie": "2024-04-12 22:48:03 +0800"
+    },
+    "done": true
+  },
+  "minecraft:recipes/building_blocks/stone": {
+    "criteria": {
+      "has_cobblestone": "2024-04-12 22:47:54 +0800"
+    },
+    "done": true
+  },
+  "minecraft:recipes/decorations/cobblestone_wall_from_cobblestone_stonecutting": {
+    "criteria": {
+      "has_cobblestone": "2024-04-12 22:47:54 +0800"
+    },
+    "done": true
+  },
+  "minecraft:recipes/building_blocks/cobblestone_stairs_from_cobblestone_stonecutting": {
+    "criteria": {
+      "has_cobblestone": "2024-04-12 22:47:54 +0800"
+    },
+    "done": true
+  },
+  "minecraft:recipes/building_blocks/cobblestone_stairs": {
+    "criteria": {
+      "has_cobblestone": "2024-04-12 22:47:54 +0800"
+    },
+    "done": true
+  },
+  "minecraft:recipes/tools/stone_hoe": {
+    "criteria": {
+      "has_cobblestone": "2024-04-12 22:47:54 +0800"
+    },
+    "done": true
+  },
+  "minecraft:recipes/tools/stone_shovel": {
+    "criteria": {
+      "has_cobblestone": "2024-04-12 22:47:54 +0800"
     },
     "done": true
   },

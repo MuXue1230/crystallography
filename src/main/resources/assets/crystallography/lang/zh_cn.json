@@ -7,5 +7,24 @@
   "item.crystallography.triple_extruded_unfired_steel_ingot": "未烧炼的重压钢锭",
   "item.crystallography.triple_extruded_steel_ingot": "重压钢锭",
   "item.crystallography.quadruple_extruded_unfired_steel_ingot": "未烧炼的超压钢锭",
-  "item.crystallography.quadruple_extruded_steel_ingot": "超压钢锭"
+  "item.crystallography.quadruple_extruded_steel_ingot": "超压钢锭",
+
+
+  "item.crystallography.steel_sword": "钢剑",
+  "item.crystallography.steel_pickaxe": "钢镐",
+  "item.crystallography.steel_axe": "钢斧",
+  "item.crystallography.steel_shovel": "钢铲",
+  "item.crystallography.steel_hoe": "钢锄",
+
+  "item.crystallography.super_steel_sword": "超压钢剑",
+  "item.crystallography.super_steel_pickaxe": "超压钢镐",
+  "item.crystallography.super_steel_axe": "超压钢斧",
+  "item.crystallography.super_steel_shovel": "超压钢铲",
+  "item.crystallography.super_steel_hoe": "超压钢锄",
+
+  "block.crystallography.steel_block": "钢块",
+
+  "item.crystallography.crystallization_processing_core": "结晶处理核心",
+
+  "creativetab.crystallography.crystallography_tab": "结晶"
 }

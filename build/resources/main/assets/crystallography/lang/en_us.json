@@ -7,5 +7,23 @@
   "item.crystallography.triple_extruded_unfired_steel_ingot": "Triple Extruded Unfired Steel Ingot",
   "item.crystallography.triple_extruded_steel_ingot": "Triple Extruded Steel Ingot",
   "item.crystallography.quadruple_extruded_unfired_steel_ingot": "Quadruple Extruded Unfired Steel Ingot",
-  "item.crystallography.quadruple_extruded_steel_ingot": "Quadruple Extruded Steel Ingot"
+  "item.crystallography.quadruple_extruded_steel_ingot": "Quadruple Extruded Steel Ingot",
+
+  "item.crystallography.steel_sword": "Steel Sword",
+  "item.crystallography.steel_pickaxe": "Steel Pickaxe",
+  "item.crystallography.steel_axe": "Steel Axe",
+  "item.crystallography.steel_shovel": "Steel Shovel",
+  "item.crystallography.steel_hoe": "Steel Hoe",
+
+  "item.crystallography.super_steel_sword": "Quadruple Extruded Steel Sword",
+  "item.crystallography.super_steel_pickaxe": "Quadruple Extruded Steel Pickaxe",
+  "item.crystallography.super_steel_axe": "Quadruple Extruded Steel Axe",
+  "item.crystallography.super_steel_shovel": "Quadruple Extruded Steel Shovel",
+  "item.crystallography.super_steel_hoe": "Quadruple Extruded Steel Hoe",
+
+  "block.crystallography.steel_block": "Steel Block",
+
+  "item.crystallography.crystallization_processing_core": "Crystallization Processing Core",
+
+  "creativetab.crystallography.crystallography_tab": "Crystallography"
 }

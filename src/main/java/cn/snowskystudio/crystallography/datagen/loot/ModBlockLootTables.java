@@ -1,5 +1,6 @@
 package cn.snowskystudio.crystallography.datagen.loot;
 
+import cn.snowskystudio.crystallography.blocks.ModBlocks;
 import net.minecraft.data.loot.BlockLootSubProvider;
 import net.minecraft.world.flag.FeatureFlagSet;
 import net.minecraft.world.flag.FeatureFlags;
@@ -11,6 +12,7 @@ import net.minecraft.world.level.storage.loot.entries.LootItem;
 import net.minecraft.world.level.storage.loot.functions.ApplyBonusCount;
 import net.minecraft.world.level.storage.loot.functions.SetItemCountFunction;
 import net.minecraft.world.level.storage.loot.providers.number.UniformGenerator;
+import net.minecraftforge.registries.RegistryObject;
 
 import java.util.Set;
 
@@ -21,7 +23,7 @@ public class ModBlockLootTables extends BlockLootSubProvider {
 
     @Override
     protected void generate() {
-        //this.dropSelf(ModBlocks.XX_BLOCK.get());
+        this.dropSelf(ModBlocks.STEEL_BLOCK.get());
 
         //this.add(ModBlock.XX_BLOCK.get(),
         //         block -> createCopperLikeOreDrops(ModBlocks.XX_BLOCK.get(), ModItems.XX_BLOCK.get()));
@@ -36,8 +38,8 @@ public class ModBlockLootTables extends BlockLootSubProvider {
                 ));
     }
 
-    //@Override
-    //protected Iterable<Block> getKnownBlocks() {
-    //    return ModBlocks.BLOCKS.getEntries().stream().map(RegistryObject::get)::iterator;
-    //}
+    @Override
+    protected Iterable<Block> getKnownBlocks() {
+        return ModBlocks.BLOCKS.getEntries().stream().map(RegistryObject::get)::iterator;
+    }
 }

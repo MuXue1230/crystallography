@@ -1,6 +1,7 @@
 package cn.snowskystudio.crystallography.datagen;
 
 import cn.snowskystudio.crystallography.Crystallography;
+import cn.snowskystudio.crystallography.blocks.ModBlocks;
 import net.minecraft.data.PackOutput;
 import net.minecraft.world.level.block.Block;
 import net.minecraftforge.client.model.generators.BlockStateProvider;
@@ -14,7 +15,7 @@ public class ModBlockStateProvider extends BlockStateProvider {
 
     @Override
     protected void registerStatesAndModels() {
-        // blockWithItem(ModBlocks.XX_BLOCK);
+        blockWithItem(ModBlocks.STEEL_BLOCK);
     }
 
     private void blockWithItem(RegistryObject<Block> blockRegistryObject) {

@@ -1,5 +1,7 @@
 package cn.snowskystudio.crystallography;
 
+import cn.snowskystudio.crystallography.blocks.ModBlocks;
+import cn.snowskystudio.crystallography.items.ModCreativeModeTabs;
 import cn.snowskystudio.crystallography.items.ModItems;
 import com.mojang.logging.LogUtils;
 import net.minecraftforge.api.distmarker.Dist;
@@ -29,6 +31,8 @@ public class Crystallography
     {
         IEventBus modEventBus = FMLJavaModLoadingContext.get().getModEventBus();
         ModItems.register(modEventBus);
+        ModBlocks.regisiter(modEventBus);
+        ModCreativeModeTabs.register(modEventBus);
         modEventBus.addListener(this::commonSetup);
         MinecraftForge.EVENT_BUS.register(this);
         modEventBus.addListener(this::addCreative);

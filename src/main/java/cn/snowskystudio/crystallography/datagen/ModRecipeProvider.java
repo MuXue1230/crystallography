@@ -67,13 +67,14 @@ public class ModRecipeProvider extends RecipeProvider implements IConditionBuild
                 .define('B', ModItems.FIRST_EXTRUDED_STEEL_INGOT.get())
                 .unlockedBy(getHasName(ModItems.SECONDARY_EXTRUDED_STEEL_INGOT.get()), has(ModItems.SECONDARY_EXTRUDED_STEEL_INGOT.get()))
                 .save(p_251297_);
-        ShapedRecipeBuilder.shaped(RecipeCategory.MISC, ModItems.QUADRUPLE_EXTRUDED_UNFIRED_STEEL_INGOT.get())
-                .pattern("AAA")
-                .pattern("ABA")
-                .pattern("AAA")
-                .define('A', ModItems.TRIPLE_EXTRUDED_STEEL_INGOT.get())
-                .define('B', ModItems.SECONDARY_EXTRUDED_STEEL_INGOT.get())
-                .unlockedBy(getHasName(ModItems.TRIPLE_EXTRUDED_STEEL_INGOT.get()), has(ModItems.TRIPLE_EXTRUDED_STEEL_INGOT.get()))
+        ShapedRecipeBuilder.shaped(RecipeCategory.MISC, ModItems.CRYSTALLIZATION_PROCESSING_CORE.get())
+                .pattern("CBC")
+                .pattern("BAB")
+                .pattern("CBC")
+                .define('A', Items.NETHER_STAR)
+                .define('B', Items.REDSTONE)
+                .define('C', Items.DIAMOND)
+                .unlockedBy(getHasName(Items.NETHER_STAR), has(Items.NETHER_STAR))
                 .save(p_251297_);
     }
 
