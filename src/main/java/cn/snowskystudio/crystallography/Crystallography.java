@@ -1,9 +1,14 @@
 package cn.snowskystudio.crystallography;
 
 import cn.snowskystudio.crystallography.blocks.ModBlocks;
+import cn.snowskystudio.crystallography.blocks.entity.ModBlockEntities;
 import cn.snowskystudio.crystallography.items.ModCreativeModeTabs;
 import cn.snowskystudio.crystallography.items.ModItems;
+import cn.snowskystudio.crystallography.recipe.ModRecipes;
+import cn.snowskystudio.crystallography.screen.ModMenuTypes;
+import cn.snowskystudio.crystallography.screen.PressMachineScreen;
 import com.mojang.logging.LogUtils;
+import net.minecraft.client.gui.screens.MenuScreens;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.event.BuildCreativeModeTabContentsEvent;
@@ -32,7 +37,10 @@ public class Crystallography
         IEventBus modEventBus = FMLJavaModLoadingContext.get().getModEventBus();
         ModItems.register(modEventBus);
         ModBlocks.regisiter(modEventBus);
+        ModBlockEntities.register(modEventBus);
         ModCreativeModeTabs.register(modEventBus);
+        ModMenuTypes.register(modEventBus);
+        ModRecipes.register(modEventBus);
         modEventBus.addListener(this::commonSetup);
         MinecraftForge.EVENT_BUS.register(this);
         modEventBus.addListener(this::addCreative);
@@ -55,6 +63,7 @@ public class Crystallography
         @SubscribeEvent
         public static void onClientSetup(FMLClientSetupEvent event)
         {
+            MenuScreens.register(ModMenuTypes.PRESS_MACHINE_MENU.get(), PressMachineScreen::new);
         }
     }
 }

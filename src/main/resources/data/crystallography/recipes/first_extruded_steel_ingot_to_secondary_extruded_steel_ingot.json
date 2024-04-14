@@ -1,0 +1,15 @@
+{
+  "type": "crystallography:press_machine",
+  "ingredients": [
+    {
+      "item": "crystallography:first_extruded_steel_ingot"
+    },
+    {
+      "item": "crystallography:first_extruded_steel_ingot"
+    }
+  ],
+  "result": {
+    "count": 1,
+    "item": "crystallography:secondary_extruded_steel_ingot"
+  }
+}

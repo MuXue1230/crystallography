@@ -36,12 +36,23 @@ public class ModCreativeModeTabs {
                         p_259752_.accept(ModItems.STEEL_SHOVEL.get());
                         p_259752_.accept(ModItems.STEEL_HOE.get());
 
-
                         p_259752_.accept(ModItems.SUPER_STEEL_SWORD.get());
                         p_259752_.accept(ModItems.SUPER_STEEL_PICKAXE.get());
                         p_259752_.accept(ModItems.SUPER_STEEL_AXE.get());
                         p_259752_.accept(ModItems.SUPER_STEEL_SHOVEL.get());
                         p_259752_.accept(ModItems.SUPER_STEEL_HOE.get());
+
+                        p_259752_.accept(ModItems.STEEL_HELMET.get());
+                        p_259752_.accept(ModItems.STEEL_CHESTPLATE.get());
+                        p_259752_.accept(ModItems.STEEL_LEGGINGS.get());
+                        p_259752_.accept(ModItems.STEEL_BOOTS.get());
+
+                        p_259752_.accept(ModItems.SUPER_STEEL_HELMET.get());
+                        p_259752_.accept(ModItems.SUPER_STEEL_CHESTPLATE.get());
+                        p_259752_.accept(ModItems.SUPER_STEEL_LEGGINGS.get());
+                        p_259752_.accept(ModItems.SUPER_STEEL_BOOTS.get());
+
+                        p_259752_.accept(ModBlocks.PRESS_MACHINE.get());
                     }))
                     .build());
 

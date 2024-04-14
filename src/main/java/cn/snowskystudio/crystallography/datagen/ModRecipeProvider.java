@@ -1,6 +1,7 @@
 package cn.snowskystudio.crystallography.datagen;
 
 import cn.snowskystudio.crystallography.Crystallography;
+import cn.snowskystudio.crystallography.blocks.ModBlocks;
 import cn.snowskystudio.crystallography.items.ModItems;
 import net.minecraft.data.PackOutput;
 import net.minecraft.data.recipes.*;
@@ -75,6 +76,15 @@ public class ModRecipeProvider extends RecipeProvider implements IConditionBuild
                 .define('B', Items.REDSTONE)
                 .define('C', Items.DIAMOND)
                 .unlockedBy(getHasName(Items.NETHER_STAR), has(Items.NETHER_STAR))
+                .save(p_251297_);
+        ShapedRecipeBuilder.shaped(RecipeCategory.MISC, ModBlocks.PRESS_MACHINE.get())
+                .pattern("ACA")
+                .pattern("AAA")
+                .pattern("BBB")
+                .define('A', ModBlocks.STEEL_BLOCK.get())
+                .define('B', Items.IRON_INGOT)
+                .define('C', ModItems.QUADRUPLE_EXTRUDED_STEEL_INGOT.get())
+                .unlockedBy(getHasName(ModItems.QUADRUPLE_EXTRUDED_STEEL_INGOT.get()), has(ModItems.QUADRUPLE_EXTRUDED_STEEL_INGOT.get()))
                 .save(p_251297_);
     }
 

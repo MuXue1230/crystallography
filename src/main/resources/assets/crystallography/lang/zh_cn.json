@@ -22,7 +22,19 @@
   "item.crystallography.super_steel_shovel": "超压钢铲",
   "item.crystallography.super_steel_hoe": "超压钢锄",
 
+  "item.crystallography.steel_helmet": "钢制头盔",
+  "item.crystallography.steel_chestplate": "钢制胸甲",
+  "item.crystallography.steel_legging": "钢制护腿",
+  "item.crystallography.steel_boots": "钢制靴子",
+
+  "item.crystallography.super_steel_helmet": "超压钢制头盔",
+  "item.crystallography.super_steel_chestplate": "超压钢制胸甲",
+  "item.crystallography.super_steel_legging": "超压钢制护腿",
+  "item.crystallography.super_steel_boots": "超压钢制靴子",
+
   "block.crystallography.steel_block": "钢块",
+
+  "block.crystallography.press_machine": "高压机",
 
   "item.crystallography.crystallization_processing_core": "结晶处理核心",
 

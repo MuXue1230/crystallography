@@ -21,7 +21,19 @@
   "item.crystallography.super_steel_shovel": "Quadruple Extruded Steel Shovel",
   "item.crystallography.super_steel_hoe": "Quadruple Extruded Steel Hoe",
 
+  "item.crystallography.steel_helmet": "Steel Helmet",
+  "item.crystallography.steel_chestplate": "Steel Chestplate",
+  "item.crystallography.steel_leggings": "Steel Leggings",
+  "item.crystallography.steel_boots": "Steel Boots",
+
+  "item.crystallography.super_steel_helmet": "Quadruple Extruded Steel Helmet",
+  "item.crystallography.super_steel_chestplate": "Quadruple Extruded Steel Chestplate",
+  "item.crystallography.super_steel_leggings": "Quadruple Extruded Steel Leggings",
+  "item.crystallography.super_steel_boots": "Quadruple Extruded Steel Boots",
+
   "block.crystallography.steel_block": "Steel Block",
+
+  "block.crystallography.press_machine": "Press Machine",
 
   "item.crystallography.crystallization_processing_core": "Crystallization Processing Core",
 

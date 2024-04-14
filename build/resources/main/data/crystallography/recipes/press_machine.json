@@ -1,0 +1,24 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "key": {
+    "A": {
+      "item": "crystallography:steel_block"
+    },
+    "B": {
+      "item": "minecraft:iron_ingot"
+    },
+    "C": {
+      "item": "crystallography:quadruple_extruded_steel_ingot"
+    }
+  },
+  "pattern": [
+    "ACA",
+    "AAA",
+    "BBB"
+  ],
+  "result": {
+    "item": "crystallography:press_machine"
+  },
+  "show_notification": true
+}
