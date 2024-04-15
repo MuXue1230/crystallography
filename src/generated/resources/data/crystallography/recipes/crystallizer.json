@@ -1,0 +1,30 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "key": {
+    "A": {
+      "item": "crystallography:secondary_extruded_steel_ingot"
+    },
+    "B": {
+      "item": "crystallography:triple_extruded_steel_ingot"
+    },
+    "C": {
+      "item": "crystallography:quadruple_extruded_steel_ingot"
+    },
+    "D": {
+      "item": "crystallography:first_extruded_steel_ingot"
+    },
+    "E": {
+      "item": "crystallography:crystallization_processing_core"
+    }
+  },
+  "pattern": [
+    "ADA",
+    "BEB",
+    "CCC"
+  ],
+  "result": {
+    "item": "crystallography:crystallizer"
+  },
+  "show_notification": true
+}

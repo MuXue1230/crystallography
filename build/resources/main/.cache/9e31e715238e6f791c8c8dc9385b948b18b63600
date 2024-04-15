@@ -1,6 +1,8 @@
-// 1.20.1	2024-04-14T08:56:54.2871381	Block States: crystallography
+// 1.20.1	2024-04-14T20:54:57.3643823	Block States: crystallography
+28a264b226a1ebe78bed2d1876590866c0169d86 assets/crystallography/blockstates/crystallizer.json
 d7c3cd4e5e8ee2ecc1cd7b4d5801d2730d0d92a2 assets/crystallography/blockstates/press_machine.json
 82b2b0c49b15b159f1b17783537a4d13c9325113 assets/crystallography/blockstates/steel_block.json
 3273b584521ce0cd0330c39d9d2de848d09f490a assets/crystallography/models/block/steel_block.json
+aa2c617190f2d8398dc358785d0d976396ca3ff6 assets/crystallography/models/item/crystallizer.json
 dc517dfcb7cd90aa33785e255d53ea7d88a84a59 assets/crystallography/models/item/press_machine.json
 021c3e730ea3843f29e4f5138a5083a36c205356 assets/crystallography/models/item/steel_block.json

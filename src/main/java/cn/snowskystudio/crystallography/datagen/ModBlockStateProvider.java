@@ -24,5 +24,7 @@ public class ModBlockStateProvider extends BlockStateProvider {
 
         simpleBlockWithItem(ModBlocks.PRESS_MACHINE.get(),
                 new ModelFile.UncheckedModelFile(modLoc("block/press_machine")));
+        simpleBlockWithItem(ModBlocks.CRYSTALLIZER.get(),
+                new ModelFile.UncheckedModelFile(modLoc("block/crystallizer")));
     }
 }

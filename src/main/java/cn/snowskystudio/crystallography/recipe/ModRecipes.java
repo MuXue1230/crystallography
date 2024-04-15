@@ -13,6 +13,8 @@ public class ModRecipes {
 
     public static final RegistryObject<RecipeSerializer<PressMachineRecipe>> PRESS_MACHINE_SERIALIZER =
             SERIALIZERS.register("press_machine", () -> PressMachineRecipe.Serializer.INSTANCE);
+    public static final RegistryObject<RecipeSerializer<CrystallizerRecipe>> CRYSTALLIZER_SERIALIZER =
+            SERIALIZERS.register("crystallizer", () -> CrystallizerRecipe.Serializer.INSTANCE);
 
     public static void register(IEventBus eventBus) {
         SERIALIZERS.register(eventBus);

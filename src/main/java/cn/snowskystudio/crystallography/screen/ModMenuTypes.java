@@ -16,6 +16,8 @@ public class ModMenuTypes {
 
     public static final RegistryObject<MenuType<PressMachineMenu>> PRESS_MACHINE_MENU =
             registerMenuType("press_machine_menu", PressMachineMenu::new);
+    public static final RegistryObject<MenuType<CrystallizerMenu>> CRYSTALLIZER_MENU =
+            registerMenuType("crystallizer_menu", CrystallizerMenu::new);
 
     private static <T extends AbstractContainerMenu> RegistryObject<MenuType<T>> registerMenuType(String name, IContainerFactory<T> factory) {
         return MENUS.register(name, () -> IForgeMenuType.create(factory));

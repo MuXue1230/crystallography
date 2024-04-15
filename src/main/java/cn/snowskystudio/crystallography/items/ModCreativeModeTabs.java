@@ -53,6 +53,7 @@ public class ModCreativeModeTabs {
                         p_259752_.accept(ModItems.SUPER_STEEL_BOOTS.get());
 
                         p_259752_.accept(ModBlocks.PRESS_MACHINE.get());
+                        p_259752_.accept(ModBlocks.CRYSTALLIZER.get());
                     }))
                     .build());
 

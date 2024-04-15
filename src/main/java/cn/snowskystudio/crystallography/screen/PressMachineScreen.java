@@ -20,6 +20,10 @@ public class PressMachineScreen extends AbstractContainerScreen<PressMachineMenu
     @Override
     protected void init() {
         super.init();
+        this.imageHeight = 130;
+        this.inventoryLabelY = this.imageHeight - 94;
+        this.leftPos = (this.width - this.imageWidth) / 2;
+        this.topPos = (this.height - this.imageHeight) / 2;
     }
 
     @Override

@@ -27,7 +27,7 @@ public class PressMachineCategory implements IRecipeCategory<PressMachineRecipe>
     private final IDrawable icon;
 
     public PressMachineCategory(IGuiHelper helper) {
-        this.background = helper.createDrawable(TEXTURE, 0, 0, 176, 80);
+        this.background = helper.createDrawable(TEXTURE, 0, 0, 176, 45);
         this.icon = helper.createDrawableIngredient(VanillaTypes.ITEM_STACK, new ItemStack(ModBlocks.PRESS_MACHINE.get()));
     }
 
@@ -53,9 +53,9 @@ public class PressMachineCategory implements IRecipeCategory<PressMachineRecipe>
 
     @Override
     public void setRecipe(IRecipeLayoutBuilder builder, PressMachineRecipe recipe, IFocusGroup focuses) {
-        builder.addSlot(RecipeIngredientRole.INPUT, 29, 35).addIngredients(recipe.getIngredients().get(0));
-        builder.addSlot(RecipeIngredientRole.INPUT, 54, 35).addIngredients(recipe.getIngredients().get(1));
+        builder.addSlot(RecipeIngredientRole.INPUT, 29, 17).addIngredients(recipe.getIngredients().get(0));
+        builder.addSlot(RecipeIngredientRole.INPUT, 54, 17).addIngredients(recipe.getIngredients().get(1));
 
-        builder.addSlot(RecipeIngredientRole.OUTPUT, 123, 35).addItemStack(recipe.getResultItem(null));
+        builder.addSlot(RecipeIngredientRole.OUTPUT, 123, 17).addItemStack(recipe.getResultItem(null));
     }
 }

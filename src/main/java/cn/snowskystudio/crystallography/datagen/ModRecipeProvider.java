@@ -77,6 +77,7 @@ public class ModRecipeProvider extends RecipeProvider implements IConditionBuild
                 .define('C', Items.DIAMOND)
                 .unlockedBy(getHasName(Items.NETHER_STAR), has(Items.NETHER_STAR))
                 .save(p_251297_);
+
         ShapedRecipeBuilder.shaped(RecipeCategory.MISC, ModBlocks.PRESS_MACHINE.get())
                 .pattern("ACA")
                 .pattern("AAA")
@@ -85,6 +86,17 @@ public class ModRecipeProvider extends RecipeProvider implements IConditionBuild
                 .define('B', Items.IRON_INGOT)
                 .define('C', ModItems.QUADRUPLE_EXTRUDED_STEEL_INGOT.get())
                 .unlockedBy(getHasName(ModItems.QUADRUPLE_EXTRUDED_STEEL_INGOT.get()), has(ModItems.QUADRUPLE_EXTRUDED_STEEL_INGOT.get()))
+                .save(p_251297_);
+        ShapedRecipeBuilder.shaped(RecipeCategory.MISC, ModBlocks.CRYSTALLIZER.get())
+                .pattern("ADA")
+                .pattern("BEB")
+                .pattern("CCC")
+                .define('A', ModItems.SECONDARY_EXTRUDED_STEEL_INGOT.get())
+                .define('B', ModItems.TRIPLE_EXTRUDED_STEEL_INGOT.get())
+                .define('C', ModItems.QUADRUPLE_EXTRUDED_STEEL_INGOT.get())
+                .define('D', ModItems.FIRST_EXTRUDED_STEEL_INGOT.get())
+                .define('E', ModItems.CRYSTALLIZATION_PROCESSING_CORE.get())
+                .unlockedBy(getHasName(ModItems.CRYSTALLIZATION_PROCESSING_CORE.get()), has(ModItems.CRYSTALLIZATION_PROCESSING_CORE.get()))
                 .save(p_251297_);
     }
 

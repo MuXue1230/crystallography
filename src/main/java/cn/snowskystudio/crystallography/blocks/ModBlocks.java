@@ -1,6 +1,7 @@
 package cn.snowskystudio.crystallography.blocks;
 
 import cn.snowskystudio.crystallography.Crystallography;
+import cn.snowskystudio.crystallography.blocks.custom.CrystallizerBlock;
 import cn.snowskystudio.crystallography.blocks.custom.PressMachineBlock;
 import cn.snowskystudio.crystallography.items.ModItems;
 import net.minecraft.world.item.BlockItem;
@@ -24,6 +25,8 @@ public class ModBlocks {
 
     public static final RegistryObject<Block> PRESS_MACHINE = registerBlock("press_machine",
             () -> new PressMachineBlock(BlockBehaviour.Properties.copy(Blocks.IRON_BLOCK)));
+    public static final RegistryObject<Block> CRYSTALLIZER = registerBlock("crystallizer",
+            () -> new CrystallizerBlock(BlockBehaviour.Properties.copy(Blocks.NETHERITE_BLOCK)));
 
     private static <T extends Block>RegistryObject<T> registerBlock(String name, Supplier<T> block) {
         RegistryObject<T> toReturn = BLOCKS.register(name, block);

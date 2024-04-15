@@ -16,6 +16,10 @@ public class ModBlockEntities {
             BLOCK_ENTITIES.register("press_machine_be", ()->
                     BlockEntityType.Builder.of(PressMachineBlockEntity::new,
                             ModBlocks.PRESS_MACHINE.get()).build(null));
+    public static final RegistryObject<BlockEntityType<CrystallizerBlockEntity>> CRYSTALLIZER_BE =
+            BLOCK_ENTITIES.register("crystallizer_be", ()->
+                    BlockEntityType.Builder.of(CrystallizerBlockEntity::new,
+                            ModBlocks.CRYSTALLIZER.get()).build(null));
 
     public static void register(IEventBus eventBus) {
         BLOCK_ENTITIES.register(eventBus);

@@ -130,11 +130,15 @@ public class PressMachineBlockEntity extends BlockEntity implements MenuProvider
 
             if(hasProgressFinished()) {
                 craftItem();
-                resetProgress();
+                subProgress();
             }
         } else {
             resetProgress();
         }
+    }
+
+    private void subProgress() {
+        progress = progress - progress%10 - 10;
     }
 
     private void resetProgress() {

@@ -5,6 +5,7 @@ import cn.snowskystudio.crystallography.blocks.entity.ModBlockEntities;
 import cn.snowskystudio.crystallography.items.ModCreativeModeTabs;
 import cn.snowskystudio.crystallography.items.ModItems;
 import cn.snowskystudio.crystallography.recipe.ModRecipes;
+import cn.snowskystudio.crystallography.screen.CrystallizerScreen;
 import cn.snowskystudio.crystallography.screen.ModMenuTypes;
 import cn.snowskystudio.crystallography.screen.PressMachineScreen;
 import com.mojang.logging.LogUtils;
@@ -64,6 +65,7 @@ public class Crystallography
         public static void onClientSetup(FMLClientSetupEvent event)
         {
             MenuScreens.register(ModMenuTypes.PRESS_MACHINE_MENU.get(), PressMachineScreen::new);
+            MenuScreens.register(ModMenuTypes.CRYSTALLIZER_MENU.get(), CrystallizerScreen::new);
         }
     }
 }
