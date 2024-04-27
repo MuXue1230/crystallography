@@ -3,9 +3,15 @@ pluginManagement {
         gradlePluginPortal()
         maven {
             name = 'MinecraftForge'
-            url = "https://crystal.app.lss233.com/repositories/forgedev"
-            //url = 'https://maven.minecraftforge.net/'
+            url = 'https://maven.minecraftforge.net/'
         }
+
+        maven {
+            name = 'lss233MirrorForgedev'
+            url = "https://crystal.app.lss233.com/repositories/forgedev"
+        }
+
+        maven { url = 'https://maven.parchmentmc.org' }
     }
 }
 

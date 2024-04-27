@@ -35,8 +35,12 @@
   "block.crystallography.steel_block": "钢块",
 
   "block.crystallography.press_machine": "高压机",
+  "block.crystallography.crystallizer": "结晶机",
 
   "item.crystallography.crystallization_processing_core": "结晶处理核心",
 
-  "creativetab.crystallography.crystallography_tab": "结晶"
+  "creativetab.crystallography.crystallography_tab": "结晶",
+
+  "tooltip.crystallography.water": "水",
+  "tooltip.crystallography.temperature": "温度"
 }

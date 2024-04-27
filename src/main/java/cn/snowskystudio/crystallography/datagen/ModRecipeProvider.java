@@ -1,6 +1,8 @@
 package cn.snowskystudio.crystallography.datagen;
 
 import cn.snowskystudio.crystallography.Crystallography;
+import cn.snowskystudio.crystallography.api.recipe.CrystallizerRecipeBuilder;
+import cn.snowskystudio.crystallography.api.recipe.PressMachineRecipeBuilder;
 import cn.snowskystudio.crystallography.blocks.ModBlocks;
 import cn.snowskystudio.crystallography.items.ModItems;
 import net.minecraft.data.PackOutput;
@@ -98,19 +100,131 @@ public class ModRecipeProvider extends RecipeProvider implements IConditionBuild
                 .define('E', ModItems.CRYSTALLIZATION_PROCESSING_CORE.get())
                 .unlockedBy(getHasName(ModItems.CRYSTALLIZATION_PROCESSING_CORE.get()), has(ModItems.CRYSTALLIZATION_PROCESSING_CORE.get()))
                 .save(p_251297_);
+
+        PressMachineRecipeBuilder.builder(ModItems.FIRST_EXTRUDED_STEEL_INGOT.get())
+                .setIngredient(1, ModItems.STEEL_INGOT.get())
+                .setIngredient(2, ModItems.STEEL_INGOT.get())
+                .unlockedBy(getHasName(ModBlocks.PRESS_MACHINE.get()), has(ModBlocks.PRESS_MACHINE.get()))
+                .save(p_251297_);
+        PressMachineRecipeBuilder.builder(ModItems.SECONDARY_EXTRUDED_STEEL_INGOT.get())
+                .setIngredient(1, ModItems.FIRST_EXTRUDED_STEEL_INGOT.get())
+                .setIngredient(2, ModItems.FIRST_EXTRUDED_STEEL_INGOT.get())
+                .save(p_251297_);
+        PressMachineRecipeBuilder.builder(ModItems.TRIPLE_EXTRUDED_STEEL_INGOT.get())
+                .setIngredient(1, ModItems.SECONDARY_EXTRUDED_STEEL_INGOT.get())
+                .setIngredient(2, ModItems.SECONDARY_EXTRUDED_STEEL_INGOT.get())
+                .unlockedBy(getHasName(ModBlocks.PRESS_MACHINE.get()), has(ModBlocks.PRESS_MACHINE.get()))
+                .save(p_251297_);
+        PressMachineRecipeBuilder.builder(ModItems.QUADRUPLE_EXTRUDED_STEEL_INGOT.get())
+                .setIngredient(1, ModItems.TRIPLE_EXTRUDED_STEEL_INGOT.get())
+                .setIngredient(2, ModItems.TRIPLE_EXTRUDED_STEEL_INGOT.get())
+                .unlockedBy(getHasName(ModBlocks.PRESS_MACHINE.get()), has(ModBlocks.PRESS_MACHINE.get()))
+                .save(p_251297_);
+
+        CrystallizerRecipeBuilder.builder(ModItems.STEEL_SWORD.get())
+                .setRequireTemperature(2400)
+                .setIngredient(4, Items.NETHERITE_SWORD)
+                .setIngredient(1, ModItems.STEEL_INGOT.get())
+                .setIngredient(3, ModItems.STEEL_INGOT.get())
+                .setIngredient(5, ModItems.STEEL_INGOT.get())
+                .setIngredient(7, ModItems.STEEL_INGOT.get())
+                .unlockedBy(getHasName(ModBlocks.CRYSTALLIZER.get()), has(ModBlocks.CRYSTALLIZER.get()))
+                .save(p_251297_);
+        CrystallizerRecipeBuilder.builder(ModItems.STEEL_PICKAXE.get())
+                .setRequireTemperature(2400)
+                .setIngredient(4, Items.NETHERITE_PICKAXE)
+                .setIngredient(1, ModItems.STEEL_INGOT.get())
+                .setIngredient(3, ModItems.STEEL_INGOT.get())
+                .setIngredient(5, ModItems.STEEL_INGOT.get())
+                .setIngredient(7, ModItems.STEEL_INGOT.get())
+                .unlockedBy(getHasName(ModBlocks.CRYSTALLIZER.get()), has(ModBlocks.CRYSTALLIZER.get()))
+                .save(p_251297_);
+        CrystallizerRecipeBuilder.builder(ModItems.STEEL_AXE.get())
+                .setRequireTemperature(2400)
+                .setIngredient(4, Items.NETHERITE_AXE)
+                .setIngredient(1, ModItems.STEEL_INGOT.get())
+                .setIngredient(3, ModItems.STEEL_INGOT.get())
+                .setIngredient(5, ModItems.STEEL_INGOT.get())
+                .setIngredient(7, ModItems.STEEL_INGOT.get())
+                .unlockedBy(getHasName(ModBlocks.CRYSTALLIZER.get()), has(ModBlocks.CRYSTALLIZER.get()))
+                .save(p_251297_);
+        CrystallizerRecipeBuilder.builder(ModItems.STEEL_SHOVEL.get())
+                .setRequireTemperature(2400)
+                .setIngredient(4, Items.NETHERITE_SHOVEL)
+                .setIngredient(1, ModItems.STEEL_INGOT.get())
+                .setIngredient(3, ModItems.STEEL_INGOT.get())
+                .setIngredient(5, ModItems.STEEL_INGOT.get())
+                .setIngredient(7, ModItems.STEEL_INGOT.get())
+                .unlockedBy(getHasName(ModBlocks.CRYSTALLIZER.get()), has(ModBlocks.CRYSTALLIZER.get()))
+                .save(p_251297_);
+        CrystallizerRecipeBuilder.builder(ModItems.STEEL_HOE.get())
+                .setRequireTemperature(2400)
+                .setIngredient(4, Items.NETHERITE_HOE)
+                .setIngredient(1, ModItems.STEEL_INGOT.get())
+                .setIngredient(3, ModItems.STEEL_INGOT.get())
+                .setIngredient(5, ModItems.STEEL_INGOT.get())
+                .setIngredient(7, ModItems.STEEL_INGOT.get())
+                .unlockedBy(getHasName(ModBlocks.CRYSTALLIZER.get()), has(ModBlocks.CRYSTALLIZER.get()))
+                .save(p_251297_);
+
+        CrystallizerRecipeBuilder.builder(ModItems.SUPER_STEEL_SWORD.get())
+                .setRequireTemperature(9600)
+                .setIngredient(4, ModItems.QUADRUPLE_EXTRUDED_STEEL_INGOT.get())
+                .setIngredient(1, ModItems.QUADRUPLE_EXTRUDED_STEEL_INGOT.get())
+                .setIngredient(3, ModItems.QUADRUPLE_EXTRUDED_STEEL_INGOT.get())
+                .setIngredient(5, ModItems.QUADRUPLE_EXTRUDED_STEEL_INGOT.get())
+                .setIngredient(7, ModItems.QUADRUPLE_EXTRUDED_STEEL_INGOT.get())
+                .unlockedBy(getHasName(ModBlocks.CRYSTALLIZER.get()), has(ModBlocks.CRYSTALLIZER.get()))
+                .save(p_251297_);
+        CrystallizerRecipeBuilder.builder(ModItems.SUPER_STEEL_PICKAXE.get())
+                .setRequireTemperature(9600)
+                .setIngredient(4, ModItems.STEEL_PICKAXE.get())
+                .setIngredient(1, ModItems.QUADRUPLE_EXTRUDED_STEEL_INGOT.get())
+                .setIngredient(3, ModItems.QUADRUPLE_EXTRUDED_STEEL_INGOT.get())
+                .setIngredient(5, ModItems.QUADRUPLE_EXTRUDED_STEEL_INGOT.get())
+                .setIngredient(7, ModItems.QUADRUPLE_EXTRUDED_STEEL_INGOT.get())
+                .unlockedBy(getHasName(ModBlocks.CRYSTALLIZER.get()), has(ModBlocks.CRYSTALLIZER.get()))
+                .save(p_251297_);
+        CrystallizerRecipeBuilder.builder(ModItems.SUPER_STEEL_AXE.get())
+                .setRequireTemperature(9600)
+                .setIngredient(4, ModItems.STEEL_AXE.get())
+                .setIngredient(1, ModItems.QUADRUPLE_EXTRUDED_STEEL_INGOT.get())
+                .setIngredient(3, ModItems.QUADRUPLE_EXTRUDED_STEEL_INGOT.get())
+                .setIngredient(5, ModItems.QUADRUPLE_EXTRUDED_STEEL_INGOT.get())
+                .setIngredient(7, ModItems.QUADRUPLE_EXTRUDED_STEEL_INGOT.get())
+                .unlockedBy(getHasName(ModBlocks.CRYSTALLIZER.get()), has(ModBlocks.CRYSTALLIZER.get()))
+                .save(p_251297_);
+        CrystallizerRecipeBuilder.builder(ModItems.SUPER_STEEL_SHOVEL.get())
+                .setRequireTemperature(9600)
+                .setIngredient(4, ModItems.STEEL_SHOVEL.get())
+                .setIngredient(1, ModItems.QUADRUPLE_EXTRUDED_STEEL_INGOT.get())
+                .setIngredient(3, ModItems.QUADRUPLE_EXTRUDED_STEEL_INGOT.get())
+                .setIngredient(5, ModItems.QUADRUPLE_EXTRUDED_STEEL_INGOT.get())
+                .setIngredient(7, ModItems.QUADRUPLE_EXTRUDED_STEEL_INGOT.get())
+                .unlockedBy(getHasName(ModBlocks.CRYSTALLIZER.get()), has(ModBlocks.CRYSTALLIZER.get()))
+                .save(p_251297_);
+        CrystallizerRecipeBuilder.builder(ModItems.SUPER_STEEL_HOE.get())
+                .setRequireTemperature(9600)
+                .setIngredient(4, ModItems.STEEL_HOE.get())
+                .setIngredient(1, ModItems.QUADRUPLE_EXTRUDED_STEEL_INGOT.get())
+                .setIngredient(3, ModItems.QUADRUPLE_EXTRUDED_STEEL_INGOT.get())
+                .setIngredient(5, ModItems.QUADRUPLE_EXTRUDED_STEEL_INGOT.get())
+                .setIngredient(7, ModItems.QUADRUPLE_EXTRUDED_STEEL_INGOT.get())
+                .unlockedBy(getHasName(ModBlocks.CRYSTALLIZER.get()), has(ModBlocks.CRYSTALLIZER.get()))
+                .save(p_251297_);
     }
 
-    protected static void oreSmelting(Consumer<FinishedRecipe> p_250654_, List<ItemLike> p_250172_, RecipeCategory p_250588_, ItemLike p_251868_, float p_250789_, int p_252144_, String p_251687_) {
-        oreCooking(p_250654_, RecipeSerializer.SMELTING_RECIPE, p_250172_, p_250588_, p_251868_, p_250789_, p_252144_, p_251687_, "_from_smelting");
+    protected static void oreSmelting(Consumer<FinishedRecipe> pFinishedRecipeConsumer, List<ItemLike> pIngredients, RecipeCategory pCategory, ItemLike pResult, float pExperience, int pCookingTime, String pGroup) {
+        oreCooking(pFinishedRecipeConsumer, RecipeSerializer.SMELTING_RECIPE, pIngredients, pCategory, pResult, pExperience, pCookingTime, pGroup, "_from_smelting");
     }
 
-    protected static void oreBlasting(Consumer<FinishedRecipe> p_248775_, List<ItemLike> p_251504_, RecipeCategory p_248846_, ItemLike p_249735_, float p_248783_, int p_250303_, String p_251984_) {
-        oreCooking(p_248775_, RecipeSerializer.BLASTING_RECIPE, p_251504_, p_248846_, p_249735_, p_248783_, p_250303_, p_251984_, "_from_blasting");
+    protected static void oreBlasting(Consumer<FinishedRecipe> pFinishedRecipeConsumer, List<ItemLike> pIngredients, RecipeCategory pCategory, ItemLike pResult, float pExperience, int pCookingTime, String pGroup) {
+        oreCooking(pFinishedRecipeConsumer, RecipeSerializer.BLASTING_RECIPE, pIngredients, pCategory, pResult, pExperience, pCookingTime, pGroup, "_from_blasting");
     }
 
-    protected static void oreCooking(Consumer<FinishedRecipe> p_250791_, RecipeSerializer<? extends AbstractCookingRecipe> p_251817_, List<ItemLike> p_249619_, RecipeCategory p_251154_, ItemLike p_250066_, float p_251871_, int p_251316_, String p_251450_, String p_249236_) {
-        for(ItemLike itemlike : p_249619_) {
-            SimpleCookingRecipeBuilder.generic(Ingredient.of(itemlike), p_251154_, p_250066_, p_251871_, p_251316_, p_251817_).group(p_251450_).unlockedBy(getHasName(itemlike), has(itemlike)).save(p_250791_, Crystallography.MODID + ":" +getItemName(p_250066_) + p_249236_ + "_" + getItemName(itemlike));
+    protected static void oreCooking(Consumer<FinishedRecipe> pFinishedRecipeConsumer, RecipeSerializer<? extends AbstractCookingRecipe> pCookingSerializer, List<ItemLike> pIngredients, RecipeCategory pCategory, ItemLike pResult, float pExperience, int pCookingTime, String pGroup, String pRecipeName) {
+        for(ItemLike itemlike : pIngredients) {
+            SimpleCookingRecipeBuilder.generic(Ingredient.of(itemlike), pCategory, pResult, pExperience, pCookingTime, pCookingSerializer).group(pGroup).unlockedBy(getHasName(itemlike), has(itemlike)).save(pFinishedRecipeConsumer, Crystallography.MODID + ":" +getItemName(pResult) + pRecipeName + "_" + getItemName(itemlike));
         }
     }
 }

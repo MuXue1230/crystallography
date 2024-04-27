@@ -2,6 +2,8 @@ package cn.snowskystudio.crystallography.screen;
 
 import cn.snowskystudio.crystallography.blocks.ModBlocks;
 import cn.snowskystudio.crystallography.blocks.entity.PressMachineBlockEntity;
+import cn.snowskystudio.crystallography.util.slot.FireSlot;
+import cn.snowskystudio.crystallography.util.slot.ReadOnlySlot;
 import net.minecraft.network.FriendlyByteBuf;
 import net.minecraft.world.entity.player.Inventory;
 import net.minecraft.world.entity.player.Player;
@@ -18,12 +20,12 @@ public class PressMachineMenu extends AbstractContainerMenu {
     private final ContainerData data;
 
     public PressMachineMenu(int pContainerId, Inventory inv, FriendlyByteBuf extraData) {
-        this(pContainerId, inv, inv.player.level().getBlockEntity(extraData.readBlockPos()), new SimpleContainerData(3));
+        this(pContainerId, inv, inv.player.level().getBlockEntity(extraData.readBlockPos()), new SimpleContainerData(5));
     }
 
     public PressMachineMenu(int pContainerId, Inventory inv, BlockEntity entity, ContainerData data) {
         super(ModMenuTypes.PRESS_MACHINE_MENU.get(), pContainerId);
-        checkContainerSize(inv, 3);
+        checkContainerSize(inv, 5);
         blockEntity = ((PressMachineBlockEntity) entity);
         this.level = inv.player.level();
         this.data = data;
@@ -34,7 +36,9 @@ public class PressMachineMenu extends AbstractContainerMenu {
         this.blockEntity.getCapability(ForgeCapabilities.ITEM_HANDLER).ifPresent(iItemHandler -> {
             this.addSlot(new SlotItemHandler(iItemHandler, 0, 29, 17));
             this.addSlot(new SlotItemHandler(iItemHandler, 1, 54, 17));
-            this.addSlot(new SlotItemHandler(iItemHandler, 2, 123, 17));
+            this.addSlot(new ReadOnlySlot(iItemHandler, 2, 123, 17));
+            this.addSlot(new FireSlot(iItemHandler, 3, 42, 60));
+            this.addSlot(new ReadOnlySlot(iItemHandler, 4, 123, 60));
         });
 
         addDataSlots(data);
@@ -50,6 +54,14 @@ public class PressMachineMenu extends AbstractContainerMenu {
         int progressArrowSize = 26; // This is the height in pixels of your arrow
 
         return maxProgress != 0 && progress != 0 ? progress * progressArrowSize / maxProgress : 0;
+    }
+
+    public int getScaledFireRest() {
+        int fireRest = this.data.get(2);
+        int maxFireRest = this.data.get(3);  // Max FireRest
+        int progressArrowSize = 16; // This is the height in pixels of your arrow
+
+        return maxFireRest != 0 && fireRest != 0 ? (maxFireRest - fireRest) * progressArrowSize / maxFireRest : progressArrowSize;
     }
 
     // CREDIT GOES TO: diesieben07 | https://github.com/diesieben07/SevenCommons
@@ -103,22 +115,22 @@ public class PressMachineMenu extends AbstractContainerMenu {
     }
 
     @Override
-    public boolean stillValid(Player p_38874_) {
+    public boolean stillValid(Player pPlayer) {
         return stillValid(ContainerLevelAccess.create(level, blockEntity.getBlockPos()),
-                p_38874_, ModBlocks.PRESS_MACHINE.get());
+                pPlayer, ModBlocks.PRESS_MACHINE.get());
     }
 
     private void addPlayerInventory(Inventory playerInventory) {
         for (int i = 0; i < 3; ++i) {
             for (int l = 0; l < 9; ++l) {
-                this.addSlot(new Slot(playerInventory, l + i * 9 + 9, 8 + l * 18, 48 + i * 18));
+                this.addSlot(new Slot(playerInventory, l + i * 9 + 9, 8 + l * 18, 90 + i * 18));
             }
         }
     }
 
     private void addPlayerHotbar(Inventory playerInventory) {
         for (int i = 0; i < 9; ++i) {
-            this.addSlot(new Slot(playerInventory, i, 8 + i * 18, 106));
+            this.addSlot(new Slot(playerInventory, i, 8 + i * 18, 149));
         }
     }
 }

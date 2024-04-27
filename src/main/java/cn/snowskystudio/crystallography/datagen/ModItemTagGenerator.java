@@ -13,13 +13,12 @@ import org.jetbrains.annotations.Nullable;
 import java.util.concurrent.CompletableFuture;
 
 public class ModItemTagGenerator extends ItemTagsProvider {
-    public ModItemTagGenerator(PackOutput p_275343_, CompletableFuture<HolderLookup.Provider> p_275729_,
-                               CompletableFuture<TagLookup<Block>> p_275322_, @Nullable ExistingFileHelper existingFileHelper) {
+    public ModItemTagGenerator(PackOutput p_275343_, CompletableFuture<HolderLookup.Provider> p_275729_, CompletableFuture<TagLookup<Block>> p_275322_, @Nullable ExistingFileHelper existingFileHelper) {
         super(p_275343_, p_275729_, p_275322_, Crystallography.MODID, existingFileHelper);
     }
 
     @Override
-    protected void addTags(HolderLookup.Provider p_256380_) {
+    protected void addTags(HolderLookup.Provider pProvider) {
         this.tag(ItemTags.TRIMMABLE_ARMOR)
                 .add(ModItems.STEEL_HELMET.get(), ModItems.STEEL_CHESTPLATE.get(), ModItems.STEEL_LEGGINGS.get(), ModItems.STEEL_BOOTS.get(),
                         ModItems.SUPER_STEEL_HELMET.get(), ModItems.SUPER_STEEL_CHESTPLATE.get(), ModItems.SUPER_STEEL_LEGGINGS.get(), ModItems.SUPER_STEEL_BOOTS.get());

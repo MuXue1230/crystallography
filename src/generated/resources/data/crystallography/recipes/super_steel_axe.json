@@ -1,0 +1,25 @@
+{
+  "type": "crystallography:crystallizer",
+  "ingredients": {
+    "1": {
+      "item": "crystallography:quadruple_extruded_steel_ingot"
+    },
+    "3": {
+      "item": "crystallography:quadruple_extruded_steel_ingot"
+    },
+    "4": {
+      "item": "crystallography:steel_axe"
+    },
+    "5": {
+      "item": "crystallography:quadruple_extruded_steel_ingot"
+    },
+    "7": {
+      "item": "crystallography:quadruple_extruded_steel_ingot"
+    }
+  },
+  "require_temperature": 9600,
+  "result": {
+    "count": 1,
+    "item": "crystallography:super_steel_axe"
+  }
+}

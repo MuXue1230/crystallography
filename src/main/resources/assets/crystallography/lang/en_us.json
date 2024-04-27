@@ -34,8 +34,12 @@
   "block.crystallography.steel_block": "Steel Block",
 
   "block.crystallography.press_machine": "Press Machine",
+  "block.crystallography.crystallizer": "Crystallizer",
 
   "item.crystallography.crystallization_processing_core": "Crystallization Processing Core",
 
-  "creativetab.crystallography.crystallography_tab": "Crystallography"
+  "creativetab.crystallography.crystallography_tab": "Crystallography",
+
+  "tooltip.crystallography.water": "Water",
+  "tooltip.crystallography.temperature": "Temperature"
 }

@@ -17,29 +17,29 @@ import java.util.function.Supplier;
 
 public enum ModArmorMaterials implements ArmorMaterial {
 
-    STEEL("steel", 45, Util.make(new EnumMap<>(ArmorItem.Type.class), (p_266655_) -> {
-        p_266655_.put(ArmorItem.Type.BOOTS, 5);
-        p_266655_.put(ArmorItem.Type.LEGGINGS, 8);
-        p_266655_.put(ArmorItem.Type.CHESTPLATE, 10);
-        p_266655_.put(ArmorItem.Type.HELMET, 5);
+    STEEL("steel", 45, Util.make(new EnumMap<>(ArmorItem.Type.class), (pMap) -> {
+        pMap.put(ArmorItem.Type.BOOTS, 5);
+        pMap.put(ArmorItem.Type.LEGGINGS, 8);
+        pMap.put(ArmorItem.Type.CHESTPLATE, 10);
+        pMap.put(ArmorItem.Type.HELMET, 5);
     }), 20, SoundEvents.ARMOR_EQUIP_IRON, 4.0F, 0.5F, () -> {
         return Ingredient.of(ModItems.STEEL_INGOT.get());
     }),
-    SUPER_STEEL("super_steel", 60, Util.make(new EnumMap<>(ArmorItem.Type.class), (p_266655_) -> {
-        p_266655_.put(ArmorItem.Type.BOOTS, 10);
-        p_266655_.put(ArmorItem.Type.LEGGINGS, 16);
-        p_266655_.put(ArmorItem.Type.CHESTPLATE, 20);
-        p_266655_.put(ArmorItem.Type.HELMET, 10);
+    SUPER_STEEL("super_steel", 60, Util.make(new EnumMap<>(ArmorItem.Type.class), (pMap) -> {
+        pMap.put(ArmorItem.Type.BOOTS, 10);
+        pMap.put(ArmorItem.Type.LEGGINGS, 16);
+        pMap.put(ArmorItem.Type.CHESTPLATE, 20);
+        pMap.put(ArmorItem.Type.HELMET, 10);
     }), 20, SoundEvents.ARMOR_EQUIP_NETHERITE, 8.0F, 2.0F, () -> {
         return Ingredient.of(ModItems.QUADRUPLE_EXTRUDED_STEEL_INGOT.get());
     });
 
     public static final StringRepresentable.EnumCodec<ArmorMaterials> CODEC = StringRepresentable.fromEnum(ArmorMaterials::values);
-    private static final EnumMap<ArmorItem.Type, Integer> HEALTH_FUNCTION_FOR_TYPE = Util.make(new EnumMap<>(ArmorItem.Type.class), (p_266653_) -> {
-        p_266653_.put(ArmorItem.Type.BOOTS, 13);
-        p_266653_.put(ArmorItem.Type.LEGGINGS, 15);
-        p_266653_.put(ArmorItem.Type.CHESTPLATE, 16);
-        p_266653_.put(ArmorItem.Type.HELMET, 11);
+    private static final EnumMap<ArmorItem.Type, Integer> HEALTH_FUNCTION_FOR_TYPE = Util.make(new EnumMap<>(ArmorItem.Type.class), (pMap) -> {
+        pMap.put(ArmorItem.Type.BOOTS, 13);
+        pMap.put(ArmorItem.Type.LEGGINGS, 15);
+        pMap.put(ArmorItem.Type.CHESTPLATE, 16);
+        pMap.put(ArmorItem.Type.HELMET, 11);
     });
 
     private final String name;
@@ -63,13 +63,13 @@ public enum ModArmorMaterials implements ArmorMaterial {
     }
 
     @Override
-    public int getDurabilityForType(ArmorItem.Type p_266807_) {
-        return HEALTH_FUNCTION_FOR_TYPE.get(p_266807_) * this.durabilityMultiplier;
+    public int getDurabilityForType(ArmorItem.Type pType) {
+        return HEALTH_FUNCTION_FOR_TYPE.get(pType) * this.durabilityMultiplier;
     }
 
     @Override
-    public int getDefenseForType(ArmorItem.Type p_267168_) {
-        return this.protectionFunctionForType.get(p_267168_);
+    public int getDefenseForType(ArmorItem.Type pType) {
+        return this.protectionFunctionForType.get(pType);
     }
 
     @Override

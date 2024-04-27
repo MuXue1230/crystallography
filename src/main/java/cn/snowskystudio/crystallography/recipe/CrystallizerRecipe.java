@@ -1,7 +1,6 @@
 package cn.snowskystudio.crystallography.recipe;
 
 import cn.snowskystudio.crystallography.Crystallography;
-import com.google.gson.JsonArray;
 import com.google.gson.JsonObject;
 import net.minecraft.core.NonNullList;
 import net.minecraft.core.RegistryAccess;
@@ -12,56 +11,67 @@ import net.minecraft.world.SimpleContainer;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.crafting.*;
 import net.minecraft.world.level.Level;
+import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
+import java.util.HashMap;
 import java.util.Map;
-import java.util.Set;
 
 public class CrystallizerRecipe implements Recipe<SimpleContainer> {
-    private final NonNullList<Ingredient> inputItems;
+    private final Map<String, Ingredient> inputItems;
     private final ItemStack result;
+    private final int requireTemperature;
     private final ResourceLocation id;
 
-    public CrystallizerRecipe(NonNullList<Ingredient> inputItems, ItemStack output, ResourceLocation id) {
+    public CrystallizerRecipe(Map<String, Ingredient> inputItems, ItemStack output, int requireTemperature, ResourceLocation id) {
         this.inputItems = inputItems;
         this.result = output;
+        this.requireTemperature = requireTemperature;
         this.id = id;
     }
 
     @Override
-    public boolean matches(SimpleContainer p_44002_, Level p_44003_) {
-        if (p_44003_.isClientSide()) {
+    public boolean matches(SimpleContainer pContainer, Level pLevel) {
+        if (pLevel.isClientSide()) {
             return false;
         }
 
-        return inputItems.get(0).test(p_44002_.getItem(0)) &&
-                inputItems.get(1).test(p_44002_.getItem(1)) &&
-                inputItems.get(2).test(p_44002_.getItem(2)) &&
-                inputItems.get(3).test(p_44002_.getItem(3)) &&
-                inputItems.get(4).test(p_44002_.getItem(4)) &&
-                inputItems.get(5).test(p_44002_.getItem(5)) &&
-                inputItems.get(6).test(p_44002_.getItem(6)) &&
-                inputItems.get(7).test(p_44002_.getItem(7)) &&
-                inputItems.get(8).test(p_44002_.getItem(8));
+        for (int i = 0; i < this.getIngredients().size(); i++) {
+            if (!this.getIngredients().get(i).isEmpty() && !this.getIngredients().get(i).test(pContainer.getItem(i))) {
+                return false;
+            }
+        }
+
+        return true;
     }
 
+    @NotNull
     @Override
     public NonNullList<Ingredient> getIngredients() {
-        return inputItems;
+        NonNullList<Ingredient> ingredientNonNullList = NonNullList.withSize(9, Ingredient.EMPTY);
+        for (int i = 0; i < this.inputItems.values().size(); i++) {
+            ingredientNonNullList.set(i, this.getIngredient(i));
+        }
+        return ingredientNonNullList;
     }
 
     @Override
-    public ItemStack assemble(SimpleContainer p_44001_, RegistryAccess p_267165_) {
+    public boolean isIncomplete() {
+        return this.inputItems.isEmpty();
+    }
+
+    @Override
+    public ItemStack assemble(SimpleContainer pContainer, RegistryAccess pRegistryAccess) {
         return result.copy();
     }
 
     @Override
-    public boolean canCraftInDimensions(int p_43999_, int p_44000_) {
+    public boolean canCraftInDimensions(int pWidth, int pHeight) {
         return true;
     }
 
     @Override
-    public ItemStack getResultItem(RegistryAccess p_267052_) {
+    public ItemStack getResultItem(RegistryAccess pRegistryAccess) {
         return result.copy();
     }
 
@@ -90,40 +100,57 @@ public class CrystallizerRecipe implements Recipe<SimpleContainer> {
         public static final ResourceLocation ID = new ResourceLocation(Crystallography.MODID, "crystallizer");
 
         @Override
-        public CrystallizerRecipe fromJson(ResourceLocation p_44103_, JsonObject p_44104_) {
-            ItemStack output = ShapedRecipe.itemStackFromJson(GsonHelper.getAsJsonObject(p_44104_, "result"));
+        public CrystallizerRecipe fromJson(ResourceLocation pRecipeId, JsonObject pSerializedRecipe) {
+            ItemStack output = ShapedRecipe.itemStackFromJson(GsonHelper.getAsJsonObject(pSerializedRecipe, "result"));
 
-            JsonArray ingredients = GsonHelper.getAsJsonArray(p_44104_, "ingredients");
-            NonNullList<Ingredient> inputs = NonNullList.withSize(9, Ingredient.EMPTY);
+            int reqTemp = GsonHelper.getAsInt(pSerializedRecipe, "require_temperature");
 
-            for(int i = 0; i < inputs.size(); i++) {
-                inputs.set(i, Ingredient.fromJson(ingredients.get(i)));
+            JsonObject ingredients = GsonHelper.getAsJsonObject(pSerializedRecipe, "ingredients");
+            Map<String, Ingredient> inputs = new HashMap<>();
+
+            for (String id: ingredients.asMap().keySet()) {
+                Ingredient ingredient = Ingredient.fromJson(ingredients.get(id));
+                inputs.put(id, ingredient);
             }
 
-            return new CrystallizerRecipe(inputs, output, p_44103_);
+            return new CrystallizerRecipe(inputs, output, reqTemp, pRecipeId);
         }
 
         @Override
-        public @Nullable CrystallizerRecipe fromNetwork(ResourceLocation p_44105_, FriendlyByteBuf p_44106_) {
-            NonNullList<Ingredient> inputs = NonNullList.withSize(p_44106_.readInt(), Ingredient.EMPTY);
+        public @Nullable CrystallizerRecipe fromNetwork(ResourceLocation pRecipeId, FriendlyByteBuf pBuffer) {
+            Map<String, Ingredient> inputs = new HashMap<>();
 
-            for(int i = 0; i < inputs.size(); i++) {
-                inputs.set(i, Ingredient.fromNetwork(p_44106_));
+            for(int i = 0; i < 9; i++) {
+                inputs.put(String.valueOf(pBuffer.readInt()), Ingredient.fromNetwork(pBuffer));
             }
 
-            ItemStack output = p_44106_.readItem();
-            return new CrystallizerRecipe(inputs, output, p_44105_);
+            ItemStack output = pBuffer.readItem();
+
+            int reqTemp = pBuffer.readInt();
+
+            return new CrystallizerRecipe(inputs, output, reqTemp, pRecipeId);
         }
 
         @Override
-        public void toNetwork(FriendlyByteBuf p_44101_, CrystallizerRecipe p_44102_) {
-            p_44101_.writeInt(p_44102_.inputItems.size());
-
-            for (Ingredient ingredient : p_44102_.getIngredients()) {
-                ingredient.toNetwork(p_44101_);
+        public void toNetwork(FriendlyByteBuf pBuffer, CrystallizerRecipe pRecipe) {
+            for (String ingredientId : pRecipe.getIngredientsMap().keySet()) {
+                pBuffer.writeInt(Integer.parseInt(ingredientId));
+                pRecipe.getIngredientsMap().get(ingredientId).toNetwork(pBuffer);
             }
 
-            p_44101_.writeItemStack(p_44102_.getResultItem(null), false);
+            pBuffer.writeItemStack(pRecipe.getResultItem(null), false);
+
+            pBuffer.writeInt(pRecipe.getReqTemp());
         }
+    }
+
+    public int getReqTemp() {
+        return this.requireTemperature;
+    }
+    public Map<String, Ingredient> getIngredientsMap() {
+        return this.inputItems;
+    }
+    public Ingredient getIngredient(int id) {
+        return this.inputItems.getOrDefault(String.valueOf(id), Ingredient.EMPTY);
     }
 }

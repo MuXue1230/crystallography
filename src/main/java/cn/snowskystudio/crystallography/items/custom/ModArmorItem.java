@@ -21,9 +21,10 @@ public class ModArmorItem extends ArmorItem {
                             200, 1, false, false, true))
                     .build();
 
-    public ModArmorItem(ArmorMaterial p_40386_, Type p_266831_, Properties p_40388_) {
-        super(p_40386_, p_266831_, p_40388_);
+    public ModArmorItem(ArmorMaterial pMaterial, Type pType, Properties pProperties) {
+        super(pMaterial, pType, pProperties);
     }
+
 
     @Override
     public void onInventoryTick(ItemStack stack, Level level, Player player, int slotIndex, int selectedIndex) {

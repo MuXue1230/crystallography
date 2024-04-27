@@ -20,7 +20,7 @@ public class PressMachineScreen extends AbstractContainerScreen<PressMachineMenu
     @Override
     protected void init() {
         super.init();
-        this.imageHeight = 130;
+        this.imageHeight = 173;
         this.inventoryLabelY = this.imageHeight - 94;
         this.leftPos = (this.width - this.imageWidth) / 2;
         this.topPos = (this.height - this.imageHeight) / 2;
@@ -41,8 +41,9 @@ public class PressMachineScreen extends AbstractContainerScreen<PressMachineMenu
 
     private void renderProgressArrow(GuiGraphics guiGraphics, int x, int y) {
         if(menu.isCrafting()) {
-            guiGraphics.blit(TEXTURE, x + 83, y + 33, 176, 0, menu.getScaledProgress(), 20);
+            guiGraphics.blit(TEXTURE, x + 83, y + 37, 176, 0, menu.getScaledProgress(), 20);
         }
+        guiGraphics.blit(TEXTURE, x + 40, y + 40 + menu.getScaledFireRest(), 176, 20 + menu.getScaledFireRest(), 20, 20);
     }
 
     @Override

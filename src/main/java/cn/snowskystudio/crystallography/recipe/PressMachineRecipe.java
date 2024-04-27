@@ -26,12 +26,12 @@ public class PressMachineRecipe implements Recipe<SimpleContainer> {
     }
 
     @Override
-    public boolean matches(SimpleContainer p_44002_, Level p_44003_) {
-        if (p_44003_.isClientSide()) {
+    public boolean matches(SimpleContainer pContainer, Level pLevel) {
+        if (pLevel.isClientSide()) {
             return false;
         }
 
-        return inputItems.get(0).test(p_44002_.getItem(0)) && inputItems.get(1).test(p_44002_.getItem(1));
+        return inputItems.get(0).test(pContainer.getItem(0)) && inputItems.get(1).test(pContainer.getItem(1));
     }
 
     @Override
@@ -40,17 +40,17 @@ public class PressMachineRecipe implements Recipe<SimpleContainer> {
     }
 
     @Override
-    public ItemStack assemble(SimpleContainer p_44001_, RegistryAccess p_267165_) {
+    public ItemStack assemble(SimpleContainer pContainer, RegistryAccess pRegistryAccess) {
         return output.copy();
     }
 
     @Override
-    public boolean canCraftInDimensions(int p_43999_, int p_44000_) {
+    public boolean canCraftInDimensions(int pWidth, int pHeight) {
         return true;
     }
 
     @Override
-    public ItemStack getResultItem(RegistryAccess p_267052_) {
+    public ItemStack getResultItem(RegistryAccess pRegistryAccess) {
         return output.copy();
     }
 
@@ -79,40 +79,40 @@ public class PressMachineRecipe implements Recipe<SimpleContainer> {
         public static final ResourceLocation ID = new ResourceLocation(Crystallography.MODID, "press_machine");
 
         @Override
-        public PressMachineRecipe fromJson(ResourceLocation p_44103_, JsonObject p_44104_) {
-            ItemStack output = ShapedRecipe.itemStackFromJson(GsonHelper.getAsJsonObject(p_44104_, "result"));
+        public PressMachineRecipe fromJson(ResourceLocation pRecipeId, JsonObject pSerializedRecipe) {
+            ItemStack output = ShapedRecipe.itemStackFromJson(GsonHelper.getAsJsonObject(pSerializedRecipe, "result"));
 
-            JsonArray ingredients = GsonHelper.getAsJsonArray(p_44104_, "ingredients");
+            JsonArray ingredients = GsonHelper.getAsJsonArray(pSerializedRecipe, "ingredients");
             NonNullList<Ingredient> inputs = NonNullList.withSize(2, Ingredient.EMPTY);
 
             for(int i = 0; i < inputs.size(); i++) {
                 inputs.set(i, Ingredient.fromJson(ingredients.get(i)));
             }
 
-            return new PressMachineRecipe(inputs, output, p_44103_);
+            return new PressMachineRecipe(inputs, output, pRecipeId);
         }
 
         @Override
-        public @Nullable PressMachineRecipe fromNetwork(ResourceLocation p_44105_, FriendlyByteBuf p_44106_) {
-            NonNullList<Ingredient> inputs = NonNullList.withSize(p_44106_.readInt(), Ingredient.EMPTY);
+        public @Nullable PressMachineRecipe fromNetwork(ResourceLocation pRecipeId, FriendlyByteBuf pBuffer) {
+            NonNullList<Ingredient> inputs = NonNullList.withSize(pBuffer.readInt(), Ingredient.EMPTY);
 
             for(int i = 0; i < inputs.size(); i++) {
-                inputs.set(i, Ingredient.fromNetwork(p_44106_));
+                inputs.set(i, Ingredient.fromNetwork(pBuffer));
             }
 
-            ItemStack output = p_44106_.readItem();
-            return new PressMachineRecipe(inputs, output, p_44105_);
+            ItemStack output = pBuffer.readItem();
+            return new PressMachineRecipe(inputs, output, pRecipeId);
         }
 
         @Override
-        public void toNetwork(FriendlyByteBuf p_44101_, PressMachineRecipe p_44102_) {
-            p_44101_.writeInt(p_44102_.inputItems.size());
+        public void toNetwork(FriendlyByteBuf pBuffer, PressMachineRecipe pRecipe) {
+            pBuffer.writeInt(pRecipe.inputItems.size());
 
-            for (Ingredient ingredient : p_44102_.getIngredients()) {
-                ingredient.toNetwork(p_44101_);
+            for (Ingredient ingredient : pRecipe.getIngredients()) {
+                ingredient.toNetwork(pBuffer);
             }
 
-            p_44101_.writeItemStack(p_44102_.getResultItem(null), false);
+            pBuffer.writeItemStack(pRecipe.getResultItem(null), false);
         }
     }
 }

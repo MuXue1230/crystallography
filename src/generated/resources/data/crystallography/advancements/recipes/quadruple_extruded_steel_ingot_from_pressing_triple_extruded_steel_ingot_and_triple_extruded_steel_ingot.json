@@ -1,0 +1,35 @@
+{
+  "parent": "minecraft:recipes/root",
+  "criteria": {
+    "has_press_machine": {
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "crystallography:press_machine"
+            ]
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "has_the_recipe": {
+      "conditions": {
+        "recipe": "crystallography:quadruple_extruded_steel_ingot_from_pressing_triple_extruded_steel_ingot_and_triple_extruded_steel_ingot"
+      },
+      "trigger": "minecraft:recipe_unlocked"
+    }
+  },
+  "requirements": [
+    [
+      "has_press_machine",
+      "has_the_recipe"
+    ]
+  ],
+  "rewards": {
+    "recipes": [
+      "crystallography:quadruple_extruded_steel_ingot_from_pressing_triple_extruded_steel_ingot_and_triple_extruded_steel_ingot"
+    ]
+  },
+  "sends_telemetry_event": false
+}

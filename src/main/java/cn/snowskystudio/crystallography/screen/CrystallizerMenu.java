@@ -2,6 +2,9 @@ package cn.snowskystudio.crystallography.screen;
 
 import cn.snowskystudio.crystallography.blocks.ModBlocks;
 import cn.snowskystudio.crystallography.blocks.entity.CrystallizerBlockEntity;
+import cn.snowskystudio.crystallography.util.slot.FireSlot;
+import cn.snowskystudio.crystallography.util.slot.ReadOnlySlot;
+import cn.snowskystudio.crystallography.util.slot.WaterSlot;
 import net.minecraft.network.FriendlyByteBuf;
 import net.minecraft.world.entity.player.Inventory;
 import net.minecraft.world.entity.player.Player;
@@ -19,12 +22,12 @@ public class CrystallizerMenu extends AbstractContainerMenu {
     private final ContainerData data;
 
     public CrystallizerMenu(int pContainerId, Inventory inv, FriendlyByteBuf extraData) {
-        this(pContainerId, inv, inv.player.level().getBlockEntity(extraData.readBlockPos()), new SimpleContainerData(10));
+        this(pContainerId, inv, inv.player.level().getBlockEntity(extraData.readBlockPos()), new SimpleContainerData(12));
     }
 
     public CrystallizerMenu(int pContainerId, Inventory inv, BlockEntity entity, ContainerData data) {
         super(ModMenuTypes.CRYSTALLIZER_MENU.get(), pContainerId);
-        checkContainerSize(inv, 10);
+        checkContainerSize(inv, 12);
         blockEntity = ((CrystallizerBlockEntity) entity);
         this.level = inv.player.level();
         this.data = data;
@@ -33,16 +36,19 @@ public class CrystallizerMenu extends AbstractContainerMenu {
         addPlayerHotbar(inv);
 
         this.blockEntity.getCapability(ForgeCapabilities.ITEM_HANDLER).ifPresent(iItemHandler -> {
-            this.addSlot(new SlotItemHandler(iItemHandler, 0, 22, 21));
-            this.addSlot(new SlotItemHandler(iItemHandler, 1, 46, 21));
-            this.addSlot(new SlotItemHandler(iItemHandler, 2, 70, 21));
-            this.addSlot(new SlotItemHandler(iItemHandler, 3, 22, 45));
-            this.addSlot(new SlotItemHandler(iItemHandler, 4, 46, 45));
-            this.addSlot(new SlotItemHandler(iItemHandler, 5, 70, 45));
-            this.addSlot(new SlotItemHandler(iItemHandler, 6, 22, 69));
-            this.addSlot(new SlotItemHandler(iItemHandler, 7, 46, 69));
-            this.addSlot(new SlotItemHandler(iItemHandler, 8, 70, 69));
-            this.addSlot(new SlotItemHandler(iItemHandler, 9, 135, 45));
+            this.addSlot(new SlotItemHandler(iItemHandler, 0, 12, 21));
+            this.addSlot(new SlotItemHandler(iItemHandler, 1, 36, 21));
+            this.addSlot(new SlotItemHandler(iItemHandler, 2, 60, 21));
+            this.addSlot(new SlotItemHandler(iItemHandler, 3, 12, 45));
+            this.addSlot(new SlotItemHandler(iItemHandler, 4, 36, 45));
+            this.addSlot(new SlotItemHandler(iItemHandler, 5, 60, 45));
+            this.addSlot(new SlotItemHandler(iItemHandler, 6, 12, 69));
+            this.addSlot(new SlotItemHandler(iItemHandler, 7, 36, 69));
+            this.addSlot(new SlotItemHandler(iItemHandler, 8, 60, 69));
+            this.addSlot(new ReadOnlySlot(iItemHandler, 9, 115, 45));
+            this.addSlot(new ReadOnlySlot(iItemHandler, 9, 115, 45));
+            this.addSlot(new FireSlot(iItemHandler, 10, 146, 21));
+            this.addSlot(new WaterSlot(iItemHandler, 11, 146, 69));
         });
 
         addDataSlots(data);
@@ -56,6 +62,22 @@ public class CrystallizerMenu extends AbstractContainerMenu {
         int progress = this.data.get(0);
         int maxProgress = this.data.get(1);  // Max Progress
         int progressArrowSize = 26; // This is the height in pixels of your arrow
+
+        return maxProgress != 0 && progress != 0 ? progress * progressArrowSize / maxProgress : 0;
+    }
+
+    public int getScaledTemperature() {
+        int progress = this.data.get(2);
+        int maxProgress = 10000;  // Max Progress
+        int progressArrowSize = 158; // This is the height in pixels of your arrow
+
+        return maxProgress != 0 && progress != 0 ? progress * progressArrowSize / maxProgress : 0;
+    }
+
+    public int getScaledWater() {
+        int progress = this.data.get(3);
+        int maxProgress = 5000000;  // Max Progress
+        int progressArrowSize = 167; // This is the height in pixels of your arrow
 
         return maxProgress != 0 && progress != 0 ? progress * progressArrowSize / maxProgress : 0;
     }
@@ -111,9 +133,9 @@ public class CrystallizerMenu extends AbstractContainerMenu {
     }
 
     @Override
-    public boolean stillValid(Player p_38874_) {
+    public boolean stillValid(Player pPlayer) {
         return stillValid(ContainerLevelAccess.create(level, blockEntity.getBlockPos()),
-                p_38874_, ModBlocks.CRYSTALLIZER.get());
+                pPlayer, ModBlocks.CRYSTALLIZER.get());
     }
 
     private void addPlayerInventory(Inventory playerInventory) {
@@ -128,5 +150,9 @@ public class CrystallizerMenu extends AbstractContainerMenu {
         for (int i = 0; i < 9; ++i) {
             this.addSlot(new Slot(playerInventory, i, 8 + i * 18, 162));
         }
+    }
+
+    public ContainerData getData() {
+        return this.data;
     }
 }

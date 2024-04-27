@@ -1,0 +1,25 @@
+{
+  "type": "crystallography:crystallizer",
+  "ingredients": {
+    "1": {
+      "item": "crystallography:steel_ingot"
+    },
+    "3": {
+      "item": "crystallography:steel_ingot"
+    },
+    "4": {
+      "item": "minecraft:netherite_axe"
+    },
+    "5": {
+      "item": "crystallography:steel_ingot"
+    },
+    "7": {
+      "item": "crystallography:steel_ingot"
+    }
+  },
+  "require_temperature": 2400,
+  "result": {
+    "count": 1,
+    "item": "crystallography:steel_axe"
+  }
+}

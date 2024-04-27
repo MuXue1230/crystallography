@@ -15,9 +15,13 @@ import net.minecraft.world.inventory.AbstractContainerMenu;
 import net.minecraft.world.inventory.ContainerData;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
+import net.minecraft.world.item.Items;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.entity.BlockEntity;
+import net.minecraft.world.level.block.entity.BlockEntityType;
+import net.minecraft.world.level.block.entity.FurnaceBlockEntity;
 import net.minecraft.world.level.block.state.BlockState;
+import net.minecraftforge.common.ForgeHooks;
 import net.minecraftforge.common.capabilities.Capability;
 import net.minecraftforge.common.capabilities.ForgeCapabilities;
 import net.minecraftforge.common.util.LazyOptional;
@@ -28,45 +32,58 @@ import org.jetbrains.annotations.Nullable;
 
 import java.util.Optional;
 
+import static cn.snowskystudio.crystallography.blocks.custom.CrystallizerBlock.FACING;
+
 public class CrystallizerBlockEntity extends BlockEntity implements MenuProvider {
-    private final ItemStackHandler itemHandler = new ItemStackHandler(10);
+    private final ItemStackHandler itemHandler = new ItemStackHandler(12);
 
     private static final int INPUT_SLOTS = 0;
     private static final int OUTPUT_SLOT = 9;
+    private static final int SPECIAL_SLOTS = 10;
 
 
     private LazyOptional<IItemHandler> lazyItemHandler = LazyOptional.empty();
 
     protected final ContainerData data;
     private int progress = 0;
-    private int maxProgress = 500;
+    private int maxProgress = 1000;
+    private int temperature = 0;
+    private int water = 0;
+    private int isIncreasingTemperature = 0;
 
-    public CrystallizerBlockEntity(BlockPos p_155229_, BlockState p_155230_) {
-        super(ModBlockEntities.CRYSTALLIZER_BE.get(), p_155229_, p_155230_);
+    public CrystallizerBlockEntity(BlockPos pPos, BlockState pBlockState) {
+        super(ModBlockEntities.CRYSTALLIZER_BE.get(), pPos, pBlockState);
         this.data = new ContainerData() {
             @Override
-            public int get(int p_39284_) {
-                return switch (p_39284_) {
+            public int get(int pIndex) {
+                return switch (pIndex) {
                     case 0 -> CrystallizerBlockEntity.this.progress;
                     case 1 -> CrystallizerBlockEntity.this.maxProgress;
+                    case 2 -> CrystallizerBlockEntity.this.temperature;
+                    case 3 -> CrystallizerBlockEntity.this.water;
+                    case 4 -> CrystallizerBlockEntity.this.isIncreasingTemperature;
                     default -> 0;
                 };
             }
 
             @Override
-            public void set(int p_39285_, int p_39286_) {
-                switch (p_39285_) {
-                    case 0 -> CrystallizerBlockEntity.this.progress = p_39286_;
-                    case 1 -> CrystallizerBlockEntity.this.maxProgress = p_39286_;
+            public void set(int pIndex, int pValue) {
+                switch (pIndex) {
+                    case 0 -> CrystallizerBlockEntity.this.progress = pValue;
+                    case 1 -> CrystallizerBlockEntity.this.maxProgress = pValue;
+                    case 2 -> CrystallizerBlockEntity.this.temperature = pValue;
+                    case 3 -> CrystallizerBlockEntity.this.water = pValue;
+                    case 4 -> CrystallizerBlockEntity.this.isIncreasingTemperature = pValue;
                 }
             }
 
             @Override
             public int getCount() {
-                return 2;
+                return 5;
             }
         };
     }
+
 
     @Override
     public @NotNull <T> LazyOptional<T> getCapability(@NotNull Capability<T> cap, @Nullable Direction side) {
@@ -103,30 +120,36 @@ public class CrystallizerBlockEntity extends BlockEntity implements MenuProvider
 
     @Nullable
     @Override
-    public AbstractContainerMenu createMenu(int p_39954_, Inventory p_39955_, Player p_39956_) {
-        return new CrystallizerMenu(p_39954_, p_39955_, this, this.data);
+    public AbstractContainerMenu createMenu(int pContainerId, Inventory pPlayerInventory, Player pPlayer) {
+        return new CrystallizerMenu(pContainerId, pPlayerInventory, this, this.data);
     }
 
     @Override
-    protected void saveAdditional(CompoundTag p_187471_) {
-        p_187471_.put("crystallizer.inventory", itemHandler.serializeNBT());
-        p_187471_.putInt("crystallizer.progress", progress);
+    protected void saveAdditional(CompoundTag pTag) {
+        pTag.put("crystallizer.inventory", itemHandler.serializeNBT());
+        pTag.putInt("crystallizer.progress", progress);
+        pTag.putInt("crystallizer.temp", temperature);
+        pTag.putInt("crystallizer.water", water);
 
-        super.saveAdditional(p_187471_);
+        super.saveAdditional(pTag);
     }
 
     @Override
-    public void load(CompoundTag p_155245_) {
-        super.load(p_155245_);
+    public void load(CompoundTag pTag) {
+        super.load(pTag);
 
-        itemHandler.deserializeNBT(p_155245_.getCompound("crystallizer.inventory"));
-        progress = p_155245_.getInt("crystallizer.progress");
+        itemHandler.deserializeNBT(pTag.getCompound("crystallizer.inventory"));
+        progress = pTag.getInt("crystallizer.progress");
+        temperature = pTag.getInt("crystallizer.temp");
+        water = pTag.getInt("crystallizer.water");
     }
 
-    public void tick(Level p_155253_, BlockPos p_155254_, BlockState p_155255_) {
-        if(hasRecipe()) {
+    public void tick(Level pLevel, BlockPos pPos, BlockState pState) {
+        tickTemp();
+        tickWater();
+        if(hasRecipe() && doesTemperatureValidate() && doesWaterValidate()) {
             increaseCraftingProgress();
-            setChanged(p_155253_, p_155254_, p_155255_);
+            setChanged(pLevel, pPos, pState);
 
             if(hasProgressFinished()) {
                 craftItem();
@@ -137,13 +160,47 @@ public class CrystallizerBlockEntity extends BlockEntity implements MenuProvider
         }
     }
 
+    private void tickWater() {
+        if (this.water < 5000000 && !this.itemHandler.getStackInSlot(SPECIAL_SLOTS + 1).isEmpty()) {
+            this.itemHandler.extractItem(SPECIAL_SLOTS + 1, 1, false);
+            this.itemHandler.setStackInSlot(SPECIAL_SLOTS + 1, new ItemStack(Items.WATER_BUCKET));
+            this.water += 1000;
+        }
+    }
+
+    private void tickTemp() {
+        if (hasRecipe() && !doesTemperatureValidate()) {
+            if (!this.itemHandler.getStackInSlot(SPECIAL_SLOTS).isEmpty() && FurnaceBlockEntity.isFuel(this.itemHandler.getStackInSlot(SPECIAL_SLOTS)) && (this.temperature + (isIncreasingTemperature / 100)) < 10000) {
+                this.isIncreasingTemperature = ForgeHooks.getBurnTime(this.itemHandler.getStackInSlot(SPECIAL_SLOTS), null);
+                this.itemHandler.extractItem(SPECIAL_SLOTS, 1, false);
+            }
+        }
+        if (isIncreasingTemperature > 0) {
+            if (this.temperature < 10000) {
+                this.temperature += isIncreasingTemperature / 100;
+            }
+            this.isIncreasingTemperature -= 100;
+        }
+        else if (this.temperature > 0) {
+            this.temperature -= 50;
+        }
+    }
+
+    private boolean doesWaterValidate() {
+        return this.water >= 1000;
+    }
+
+    private boolean doesTemperatureValidate() {
+        return getCrrectRcipe().get().getReqTemp() <= this.temperature;
+    }
+
     private void resetProgress() {
         progress = 0;
     }
 
     private void craftItem() {
         Optional<CrystallizerRecipe> recipe = getCrrectRcipe();
-        ItemStack result = recipe.get().getResultItem(getLevel().registryAccess());
+        ItemStack result = recipe.get().getResultItem(null);
 
         this.itemHandler.extractItem(INPUT_SLOTS, 1, false);
         this.itemHandler.extractItem(INPUT_SLOTS + 1, 1, false);
@@ -158,6 +215,8 @@ public class CrystallizerBlockEntity extends BlockEntity implements MenuProvider
 
         this.itemHandler.setStackInSlot(OUTPUT_SLOT, new ItemStack(result.getItem(),
                 this.itemHandler.getStackInSlot(OUTPUT_SLOT).getCount() + result.getCount()));
+
+        this.water -= 1000;
     }
 
     private Optional<CrystallizerRecipe> getCrrectRcipe() {
@@ -185,7 +244,7 @@ public class CrystallizerBlockEntity extends BlockEntity implements MenuProvider
             return false;
         }
 
-        ItemStack result = recipe.get().getResultItem(getLevel().registryAccess());
+        ItemStack result = recipe.get().getResultItem(null);
 
         return canInsertAmountIntoOutputSlot(result.getCount()) && canInsertItemIntoOutputSlot(result.getItem());
     }

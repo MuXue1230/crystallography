@@ -1,7 +1,19 @@
 {
   "variants": {
-    "": {
+    "facing=east": {
+      "model": "crystallography:block/press_machine",
+      "y": 270
+    },
+    "facing=north": {
+      "model": "crystallography:block/press_machine",
+      "y": 180
+    },
+    "facing=south": {
       "model": "crystallography:block/press_machine"
+    },
+    "facing=west": {
+      "model": "crystallography:block/press_machine",
+      "y": 90
     }
   }
 }

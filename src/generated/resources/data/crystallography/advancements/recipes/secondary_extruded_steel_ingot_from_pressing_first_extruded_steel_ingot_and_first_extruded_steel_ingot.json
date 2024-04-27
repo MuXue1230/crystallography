@@ -1,0 +1,22 @@
+{
+  "parent": "minecraft:recipes/root",
+  "criteria": {
+    "has_the_recipe": {
+      "conditions": {
+        "recipe": "crystallography:secondary_extruded_steel_ingot_from_pressing_first_extruded_steel_ingot_and_first_extruded_steel_ingot"
+      },
+      "trigger": "minecraft:recipe_unlocked"
+    }
+  },
+  "requirements": [
+    [
+      "has_the_recipe"
+    ]
+  ],
+  "rewards": {
+    "recipes": [
+      "crystallography:secondary_extruded_steel_ingot_from_pressing_first_extruded_steel_ingot_and_first_extruded_steel_ingot"
+    ]
+  },
+  "sends_telemetry_event": false
+}

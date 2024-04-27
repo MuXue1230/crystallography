@@ -17,43 +17,43 @@ public class ModCreativeModeTabs {
     public static final RegistryObject<CreativeModeTab> CRYSTALLOGRAPHY_TAB = CREATIVE_MODE_TABS.register("crystallography_tab",
             () -> CreativeModeTab.builder().icon(() -> new ItemStack(ModItems.CRYSTALLIZATION_PROCESSING_CORE.get()))
                     .title(Component.translatable("creativetab.crystallography.crystallography_tab"))
-                    .displayItems(((p_270258_, p_259752_) -> {
-                        p_259752_.accept(ModItems.STEEL_INGOT.get());
-                        p_259752_.accept(ModBlocks.STEEL_BLOCK.get());
-                        p_259752_.accept(ModItems.FIRST_EXTRUDED_STEEL_INGOT.get());
-                        p_259752_.accept(ModItems.SECONDARY_EXTRUDED_STEEL_INGOT.get());
-                        p_259752_.accept(ModItems.TRIPLE_EXTRUDED_STEEL_INGOT.get());
-                        p_259752_.accept(ModItems.QUADRUPLE_EXTRUDED_STEEL_INGOT.get());
-                        p_259752_.accept(ModItems.FIRST_EXTRUDED_UNFIRED_STEEL_INGOT.get());
-                        p_259752_.accept(ModItems.SECONDARY_EXTRUDED_UNFIRED_STEEL_INGOT.get());
-                        p_259752_.accept(ModItems.TRIPLE_EXTRUDED_UNFIRED_STEEL_INGOT.get());
-                        p_259752_.accept(ModItems.QUADRUPLE_EXTRUDED_UNFIRED_STEEL_INGOT.get());
-                        p_259752_.accept(ModItems.CRYSTALLIZATION_PROCESSING_CORE.get());
+                    .displayItems(((pParameters, pOutput) -> {
+                        pOutput.accept(ModItems.STEEL_INGOT.get());
+                        pOutput.accept(ModBlocks.STEEL_BLOCK.get());
+                        pOutput.accept(ModItems.FIRST_EXTRUDED_STEEL_INGOT.get());
+                        pOutput.accept(ModItems.SECONDARY_EXTRUDED_STEEL_INGOT.get());
+                        pOutput.accept(ModItems.TRIPLE_EXTRUDED_STEEL_INGOT.get());
+                        pOutput.accept(ModItems.QUADRUPLE_EXTRUDED_STEEL_INGOT.get());
+                        pOutput.accept(ModItems.FIRST_EXTRUDED_UNFIRED_STEEL_INGOT.get());
+                        pOutput.accept(ModItems.SECONDARY_EXTRUDED_UNFIRED_STEEL_INGOT.get());
+                        pOutput.accept(ModItems.TRIPLE_EXTRUDED_UNFIRED_STEEL_INGOT.get());
+                        pOutput.accept(ModItems.QUADRUPLE_EXTRUDED_UNFIRED_STEEL_INGOT.get());
+                        pOutput.accept(ModItems.CRYSTALLIZATION_PROCESSING_CORE.get());
 
-                        p_259752_.accept(ModItems.STEEL_SWORD.get());
-                        p_259752_.accept(ModItems.STEEL_PICKAXE.get());
-                        p_259752_.accept(ModItems.STEEL_AXE.get());
-                        p_259752_.accept(ModItems.STEEL_SHOVEL.get());
-                        p_259752_.accept(ModItems.STEEL_HOE.get());
+                        pOutput.accept(ModItems.STEEL_SWORD.get());
+                        pOutput.accept(ModItems.STEEL_PICKAXE.get());
+                        pOutput.accept(ModItems.STEEL_AXE.get());
+                        pOutput.accept(ModItems.STEEL_SHOVEL.get());
+                        pOutput.accept(ModItems.STEEL_HOE.get());
 
-                        p_259752_.accept(ModItems.SUPER_STEEL_SWORD.get());
-                        p_259752_.accept(ModItems.SUPER_STEEL_PICKAXE.get());
-                        p_259752_.accept(ModItems.SUPER_STEEL_AXE.get());
-                        p_259752_.accept(ModItems.SUPER_STEEL_SHOVEL.get());
-                        p_259752_.accept(ModItems.SUPER_STEEL_HOE.get());
+                        pOutput.accept(ModItems.SUPER_STEEL_SWORD.get());
+                        pOutput.accept(ModItems.SUPER_STEEL_PICKAXE.get());
+                        pOutput.accept(ModItems.SUPER_STEEL_AXE.get());
+                        pOutput.accept(ModItems.SUPER_STEEL_SHOVEL.get());
+                        pOutput.accept(ModItems.SUPER_STEEL_HOE.get());
 
-                        p_259752_.accept(ModItems.STEEL_HELMET.get());
-                        p_259752_.accept(ModItems.STEEL_CHESTPLATE.get());
-                        p_259752_.accept(ModItems.STEEL_LEGGINGS.get());
-                        p_259752_.accept(ModItems.STEEL_BOOTS.get());
+                        pOutput.accept(ModItems.STEEL_HELMET.get());
+                        pOutput.accept(ModItems.STEEL_CHESTPLATE.get());
+                        pOutput.accept(ModItems.STEEL_LEGGINGS.get());
+                        pOutput.accept(ModItems.STEEL_BOOTS.get());
 
-                        p_259752_.accept(ModItems.SUPER_STEEL_HELMET.get());
-                        p_259752_.accept(ModItems.SUPER_STEEL_CHESTPLATE.get());
-                        p_259752_.accept(ModItems.SUPER_STEEL_LEGGINGS.get());
-                        p_259752_.accept(ModItems.SUPER_STEEL_BOOTS.get());
+                        pOutput.accept(ModItems.SUPER_STEEL_HELMET.get());
+                        pOutput.accept(ModItems.SUPER_STEEL_CHESTPLATE.get());
+                        pOutput.accept(ModItems.SUPER_STEEL_LEGGINGS.get());
+                        pOutput.accept(ModItems.SUPER_STEEL_BOOTS.get());
 
-                        p_259752_.accept(ModBlocks.PRESS_MACHINE.get());
-                        p_259752_.accept(ModBlocks.CRYSTALLIZER.get());
+                        pOutput.accept(ModBlocks.PRESS_MACHINE.get());
+                        pOutput.accept(ModBlocks.CRYSTALLIZER.get());
                     }))
                     .build());
 
